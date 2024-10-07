@@ -1,6 +1,5 @@
 <?php include_once 'config.php' ?>
 <?php
-// Start output buffering at the beginning of the file
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -128,12 +127,12 @@ ob_start();
                         <p>desert</p>
                     </div>
                 </div>
-                <div class=" hidden cursor-pointer sm:flex">
+                <div class=" hidden cursor-pointer sm:flex ">
                     <div
-                        class=" filterOpen rounded-xl overflow-hidden w-24 py-5 border border-gray-300 flex gap-3 items-center justify-center ">
+                        class=" filterOpen rounded-xl overflow-hidden w-24 py-5 bg-gray-300 border border-gray-300 flex gap-3 items-center justify-center ">
                         <i class="fa-regular fa-pen-to-square text-gray-500  "></i>
                         <i class='fa-solid fa-check hidden  text-gray-500 '></i>
-                        <p class="font-semibold text-sm ">Filters</p>
+                        <p class="font-semibold text-sm">Filters</p>
                         <sup>
                             <div class="dot absolute right-0 -top-3  inline-block">
                                 <?php

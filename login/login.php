@@ -8,12 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Hotel Management</title>
     <link rel="stylesheet" href="logins.css?v=<?= $version ?>">
-    <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
 <body class="bg-gray-100">
     <div class="loginpage">
         <div class="innerlogin">
@@ -43,9 +40,9 @@
 
         $(document).ready(function () {
             $(".password").on("click", () => {
-                let emailData = $(".email").val(); // Get the value of the email input
+                let emailData = $(".email").val(); 
 
-                if (emailData != "") { // Check if email is not empty
+                if (emailData != "") {
                     $(".email").css({
                         "border": "1px solid green",
                         "color": "green",

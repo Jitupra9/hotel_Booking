@@ -20,12 +20,10 @@ try {
     $conn->close();
     if ($result->num_rows > 0) {
         $userDetails = $result->fetch_assoc();
-        $_SESSION['user'] = $userDetails;
-        
-        // Set the user session cookie
+        $_SESSION['user'] = $userDetails; 
         $cookie_name = "userSession";
-        $cookie_value = $userDetails['user_id']; // Assuming user_id is a unique identifier
-        $cookie_expiration = time() + (365 * 24 * 60 * 60); // 1 year
+        $cookie_value = $userDetails['user_id']; 
+        $cookie_expiration = time() + (365 * 24 * 60 * 60); 
         setcookie($cookie_name, $cookie_value, $cookie_expiration, "/");
         
         header("Location: http://localhost/project_hotel_managemnt/");

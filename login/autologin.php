@@ -15,16 +15,14 @@ if (isset($_COOKIE['userSession'])) {
         $userDetails = mysqli_fetch_assoc($result);
         $_SESSION['user'] = $userDetails; 
         header("Location: http://localhost/project_hotel_managemnt/");
-        exit(); // Redirect to the homepage
+        exit(); 
     } else {
-        
         header("Location: http://localhost/hotel_managment/login.php");
         exit();
     }
     
 
 } else {
-    // If no cookie is found, redirect to the login page
     header("Location: login.php");
     exit();
 }
