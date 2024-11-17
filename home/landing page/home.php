@@ -23,9 +23,7 @@ ob_start();
             margin: 0;
         }
 
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
+
     </style>
 </head>
 
