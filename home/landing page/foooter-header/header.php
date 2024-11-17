@@ -3,7 +3,6 @@
         <div class="logo text-green-600 text-5xl sm:text-2xl font-bold "><i class="fa-solid fa-feather-pointed"></i>
             MyHome
         </div>
-        <!-- <a href="text.php">click me</a>  -->
         <div class="mini_box hidden border border-gray-300 sm:mx-3  rounded-full shadow-lg shadow-gray-500 ">
             <div class="flex justify-between items-center">
                 <p class="anywhere   cursor-pointer  px-4 lg:px-16 border-r-2">Anywhere</p>
@@ -30,7 +29,7 @@
         <p><a href="">Messages</a></p>
         <p><a href="">Notifications</a></p>
         <p><a href="">Trips</a></p>
-        <p><a href="home/wishlist.php">Whichlist</a></p>
+        <p><a href="">Whichlist</a></p>
         <hr class="border border-gray-500 my-2">
         <?php if (isset($_SESSION['user'])):
             ?>
@@ -38,13 +37,13 @@
                     <p>Account</p>
                 </a></div>
         <?php else: ?>
-            <div><a href="Login-Logout-signup/Login/autologin.php">
+            <div><a href="home/Login-Logout-signup/Login/autologin.php">
                     <p>Login</p>
                 </a></div>
         <?php endif; ?>
         <hr class="border border-gray-500 my-2">
         <p><a href="">Help Center</a></p>
-        <p><a href="Login-Logout-signup/logout.php">Logut</a></p>
+        <p><a href="home/Login-Logout-signup/logout.php">Logut</a></p>
     </div>
 
 

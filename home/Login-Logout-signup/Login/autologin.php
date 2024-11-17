@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_COOKIE['userSession'])) {
     $user_id = $_COOKIE['userSession'];
-    include_once 'config/coon.php'; 
+    include_once '../../../config/coon.php'; 
     if (!$conn) {
         die("Database connection failed");
     }
@@ -17,7 +17,7 @@ if (isset($_COOKIE['userSession'])) {
         header("Location: http://localhost/project_hotel_managemnt/");
         exit(); 
     } else {
-        header("Location: http://localhost/hotel_managment/Login-Logout-signupLogin-Logout-signup/Login/login.php");
+        header("Location: http://localhost/hotel_managment/home/Login-Logout-signupLogin-Logout-signup/Login/login.php");
         exit();
     }
     
