@@ -38,13 +38,13 @@
                     <p>Account</p>
                 </a></div>
         <?php else: ?>
-            <div><a href="login/autologin.php">
+            <div><a href="Login-Logout-signup/Login/autologin.php">
                     <p>Login</p>
                 </a></div>
         <?php endif; ?>
         <hr class="border border-gray-500 my-2">
         <p><a href="">Help Center</a></p>
-        <p><a href="logout.php">Logut</a></p>
+        <p><a href="Login-Logout-signup/logout.php">Logut</a></p>
     </div>
 
 
