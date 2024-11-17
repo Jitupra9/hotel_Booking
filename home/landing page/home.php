@@ -1,4 +1,4 @@
-<?php include_once 'config.php' ?>
+<?php include_once 'config/config.php' ?>
 <?php
 ob_start();
 ?>
@@ -36,7 +36,7 @@ ob_start();
     <script src="scrpt.js?v=<?= $version ?>"></script>
     <div class="py-7 book_containe">
         <div class="header top-0 fixed bg-white  pt-2 w-full z-50  ">
-            <?php include_once 'header.php' ?>
+            <?php include_once 'foooter-header/header.php' ?>
             <div class=" hidden  w-full sm:flex justify-center ">
                 <?php include_once 'splitCode.php'; ?>
             </div>
@@ -129,10 +129,10 @@ ob_start();
                 </div>
                 <div class=" hidden cursor-pointer sm:flex ">
                     <div
-                        class=" filterOpen rounded-xl overflow-hidden w-24 py-5 bg-gray-300 border border-gray-300 flex gap-3 items-center justify-center ">
-                        <i class="fa-regular fa-pen-to-square text-gray-500  "></i>
-                        <i class='fa-solid fa-check hidden  text-gray-500 '></i>
-                        <p class="font-semibold text-sm">Filters</p>
+                        class=" filterOpen rounded-xl overflow-hidden w-24 py-5 bg-green-600 border border-gray-300 flex gap-3 items-center justify-center ">
+                        <i class="fa-regular fa-pen-to-square  text-white "></i>
+                        <i class='fa-solid fa-check hidden  text-white '></i>
+                        <p class="font-semibold text-sm text-white">Filters</p>
                         <sup>
                             <div class="dot absolute right-0 -top-3  inline-block">
                                 <?php
@@ -163,7 +163,7 @@ ob_start();
                 <div class="inner_parant_room px-5 mx-auto">
                     <div class="flex flex-wrap -m-4 ">
                         <?php
-                        include_once 'coon.php';
+                        include_once 'config/coon.php';
                         $sql = "SELECT 
                         p.location, 
                         p.Property_type, 
@@ -304,7 +304,7 @@ ob_start();
         </div>
 
         <div class="footer md:px-20">
-            <?php include_once 'footer.php'; ?>
+            <?php include_once 'foooter-header/footer.php'; ?>
         </div>
 
         <div class="lower_nav flex sm:hidden justify-around ">
