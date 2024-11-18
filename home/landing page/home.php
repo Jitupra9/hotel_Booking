@@ -315,7 +315,7 @@ ob_start();
                             <p>Profile</p>
                         </a></div>
                 <?php else: ?>
-                    <div class="login "><a href="Login-Logout-signup/Login/autologin.php"><i class="fa-regular fa-user"></i>
+                    <div class="login "><a href="home/Login-Logout-signup/Login/autologin.php"><i class="fa-regular fa-user"></i>
                             <p>Login</p>
                         </a></div>
                 <?php endif; ?>

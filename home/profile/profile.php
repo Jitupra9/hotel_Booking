@@ -1,4 +1,4 @@
-<?php include '../../config.php';
+<?php include '../../config/config.php';
 session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,6 @@ session_start() ?>
     <title>profile</title>
     <link rel="stylesheet" href="profile.css?v=<?= $version ?>">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
     <script src="https://kit.fontawesome.com/12543e6ff4.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -24,11 +23,6 @@ session_start() ?>
             -webkit-appearance: none;
             margin: 0;
         }
-
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-
 
         .handle_scrolls {
             display: none;
@@ -592,7 +586,7 @@ session_start() ?>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        include '../../coon.php';
+                                        include_once '../../config/coon.php';
                                         $sql = "SELECT * FROM property WHERE HOSTID = {$_SESSION['user']['user_id']}";
                                         $result = mysqli_query($conn, $sql);
                                         $serialNo = 1;
@@ -638,7 +632,6 @@ session_start() ?>
     } else {
         header("location:http://localhost/project_hotel_managemnt/");
     }
-
     ?>
 </body>
 

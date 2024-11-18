@@ -25,6 +25,9 @@
             </div>
         </div>
     </div>
+    <?php
+    session_start();
+    ?>
     <div class="account-slide-bar hidden">
         <p><a href="">Messages</a></p>
         <p><a href="">Notifications</a></p>

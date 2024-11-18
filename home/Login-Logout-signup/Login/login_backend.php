@@ -5,13 +5,11 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 try {
-    $conn = mysqli_connect("localhost", "root", "", "hotel-management");
+    include_once '../../../config/coon.php';
     
     if (!$conn) {
         throw new Exception("Database connection failed");
     }
-
-    // Use a prepared statement to prevent SQL injection
     $stmt = $conn->prepare("SELECT * FROM user WHERE email = ? AND password = ?");
     $stmt->bind_param("ss", $email, $password); // "ss" means both parameters are strings
     $stmt->execute();
@@ -27,6 +25,7 @@ try {
         setcookie($cookie_name, $cookie_value, $cookie_expiration, "/");
         
         header("Location: http://localhost/project_hotel_managemnt/");
+        // print_r($_SESSION['user']);
         exit();
     } else {
         echo "<script>
