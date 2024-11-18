@@ -1,4 +1,4 @@
-<?php include_once '../../config.php' ?>
+<?php include_once '../../config/config.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
     <?php
     if (isset($_GET['property_id'])) {
         $property_id = $_GET['property_id'];
-        include_once '../../coon.php';
+        include_once '../../config/coon.php';
         $sql = "SELECT 
                         p.location, 
                         p.Property_type, 
