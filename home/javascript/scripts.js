@@ -217,12 +217,6 @@ $(document).ready(function () {
           false;
     }
 
-
-
-
-
-
-
   });
   $(".open_checkout").click(function () {
     $(".inner_open_checkout").addClass(
@@ -232,7 +226,7 @@ $(document).ready(function () {
       $(
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");
-      $(".inner_open_checkin").removeClass(
+      $(".inner_open_checkout").removeClass(
         " bg-white  rounded-full shadow-lg shadow-gray-600"
       );
       sectionActive.mapBox = false;
