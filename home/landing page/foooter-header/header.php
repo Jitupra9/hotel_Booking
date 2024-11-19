@@ -95,7 +95,7 @@
         <div class=" hidden sm:flex header_two py-5">
             <div class="inner_header_two ">
                 <div class="cursor-pointer open_map_box  overflow-hidden  hover:bg-gray-100 rounded-l-full">
-                    <div class="inner_open_map_box  px-5 h-full lg:px-14 bg-transparent  py-2  ">
+                    <div class="inner_open_map_box  px-5 h-full lg:px-14 bg-transparent  py-2  flex justify-center  flex-col">
                         <p class=" font-semibold text-gray-800">Where</p>
                         <input class="text-gray-500 outline-none bg-transparent placename" type="text"
                             placeholder="Search destination">
@@ -118,7 +118,7 @@
                 </div>
                 <div
                     class=" open_add_dates hidden cursor-pointer px-2 lg:px-8 border-r border-l border-gray-200 hover:bg-gray-100 ">
-                    <div class="inner_open_add_date  px-16 h-16 pt-1 lg:px-28  bg-transparent ">
+                    <div class="inner_open_add_date  px-16 h-16 pt-1 lg:px-28  bg-transparent  flex justify-center items-center flex-col ">
                         <p class=" font-semibold text-gray-800">Dates</p>
                         <p class="text-gray-500">Add date</p>
                     </div>

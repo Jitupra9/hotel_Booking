@@ -30,7 +30,7 @@ $(document).ready(function () {
     hindi: false,
     odia: false,
   };
-    const sectionActive = {
+  const sectionActive = {
     mapBox: false,
     checkIn: false,
     checkOut: false,
@@ -43,7 +43,6 @@ $(document).ready(function () {
     });
   });
   $(".catogories_filter,.top_header,.all_rooms").click(function (e) {
-
     $(".guest_box,.calander_box,.map_box").slideUp();
     sectionActive.mapBox = false;
     sectionActive.addGuest = false;
@@ -72,7 +71,7 @@ $(document).ready(function () {
     if (isScrollingUp) {
       if (st === 0) {
         $(".mini_box").hide();
-     
+
         $(".desktop_secreen_content").show();
         $(".catogories_filter").css({
           "box-shadow": "none",
@@ -85,7 +84,7 @@ $(document).ready(function () {
         "box-shadow": "0px 10px 10px -3px rgba(128, 128, 128, 0.492)",
       });
       $(".mini_box").show();
-   
+
       $(".sectioncontent").hide();
       $(".guest_box,.calander_box,.map_box").slideUp();
       sectionActive.mapBox = false;
@@ -119,6 +118,7 @@ $(document).ready(function () {
     $(this).css({
       color: "black",
     });
+
     $(".stay").css({
       color: "gray",
     });
@@ -127,6 +127,7 @@ $(document).ready(function () {
     ).addClass("hidden");
     $(".calendar-container").show();
     $(".open_add_dates").removeClass("hidden");
+
   });
 
   $(".stay").on("click", function () {
@@ -138,16 +139,23 @@ $(document).ready(function () {
     });
     $(".select_date,.pet_div,.open_calander_box ").removeClass("hidden");
     $(".open_add_dates").addClass("hidden");
+    if (sectionActive.addDates == true) {
+      $('.calander_box').slideUp();
+      $(
+        ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
+      ).removeClass("bg-gray-100");
+      $(
+        ".inner_open_map_box,.inner_open_guest_box,.inner_open_add_date"
+      ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
+      sectionActive.addDates = false;
+    }
   });
-
-
 
   $(".open-slide-bar").on("click", function () {
     $(".account-slide-bar").slideToggle();
   });
 
   $(".open_map_box").click(function (e) {
-
     $(".guest_box,.calander_box").slideUp();
     $(
       ".inner_open_add_date,.inner_open_map_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
@@ -193,12 +201,9 @@ $(document).ready(function () {
     $(".calander_box").slideToggle();
   });
   $(".open_checkin").click(function () {
-    
     $(".inner_open_checkin").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
-
-
 
     if (sectionActive.checkIn == true) {
       $(
@@ -216,7 +221,6 @@ $(document).ready(function () {
         sectionActive.addDates =
           false;
     }
-
   });
   $(".open_checkout").click(function () {
     $(".inner_open_checkout").addClass(
@@ -241,7 +245,6 @@ $(document).ready(function () {
   });
 
   $(".open_guest_box").click(function (e) {
-
     $(".map_box").slideUp();
     $(".calander_box").slideUp();
     $(
