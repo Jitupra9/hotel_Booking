@@ -74,7 +74,7 @@
                                 <table class="w-full ">
                                     <thead>
                                         <tr class="font-semibold">
-                                            <th>Sun</th>
+                                            <th>Sun</th
                                             <th>Mon</th>
                                             <th>Tue</th>
                                             <th>Wed</th>

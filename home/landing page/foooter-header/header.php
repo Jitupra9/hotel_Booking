@@ -106,21 +106,21 @@
                     class="open_calander_box open_checkin cursor-pointer border-r  border-l border-gray-200  hover:bg-gray-100 ">
                     <div class="inner_open_checkin   h-full _box px-5 lg:px-14 py-2  bg-transparent">
                         <p class=" font-semibold text-gray-800">Check in</p>
-                        <p class="text-gray-500">Add date.</p>
+                        <p class="text-gray-500">Add date</p>
                     </div>
                 </div>
                 <div
                     class="open_calander_box open_checkout cursor-pointer border-r  border-l border-gray-200  hover:bg-gray-100 ">
                     <div class="inner_open_checkout  h-full  px-5 lg:px-14 py-2  bg-transparent">
                         <p class=" font-semibold text-gray-800">Check out</p>
-                        <p class="text-gray-500">Add dat..</p>
+                        <p class="text-gray-500">Add date</p>
                     </div>
                 </div>
                 <div
                     class=" open_add_dates hidden cursor-pointer px-2 lg:px-8 border-r border-l border-gray-200 hover:bg-gray-100 ">
                     <div class="inner_open_add_date  px-16 h-16 pt-1 lg:px-28  bg-transparent ">
                         <p class=" font-semibold text-gray-800">Dates</p>
-                        <p class="text-gray-500">Add dates.</p>
+                        <p class="text-gray-500">Add date</p>
                     </div>
                 </div>
                 <div class=" cursor-pointer open_guest_box overflow-hidden  hover:bg-gray-200 rounded-r-full">

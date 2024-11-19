@@ -29,7 +29,7 @@ ob_start();
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="home/scrpt.js?v=<?= $version ?>"></script>
+    <script src="home/javascript/scripts.js?v=<?= $version ?>"></script>
     <div class="py-7 book_containe">
         <div class="header top-0 fixed bg-white  pt-2 w-full z-50  ">
             <?php include_once 'foooter-header/header.php' ?>

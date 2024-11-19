@@ -30,22 +30,20 @@ $(document).ready(function () {
     hindi: false,
     odia: false,
   };
-  function deactivesearch() {
-    $(".deaktop_search").removeClass("bg-red-600");
-    $(".deaktop_search").addClass("bg-gray-400");
-    $(".deaktop_search").css({
-      "box-shadow": "1px 1px 10px 5px rgba(92, 89, 89, 0.461)",
-      border: "1px solid rgba(114, 110, 110, 0.282)",
-    });
-  }
-
+    const sectionActive = {
+    mapBox: false,
+    checkIn: false,
+    checkOut: false,
+    addGuest: false,
+    addDates: false,
+  };
   $(window).on("scroll", function () {
     $(".catogories_filter").css({
       "box-shadow": "0px 10px 15px -5px rgba(128, 128, 128, 0.792)",
     });
   });
   $(".catogories_filter,.top_header,.all_rooms").click(function (e) {
-    deactivesearch();
+
     $(".guest_box,.calander_box,.map_box").slideUp();
     sectionActive.mapBox = false;
     sectionActive.addGuest = false;
@@ -56,7 +54,7 @@ $(document).ready(function () {
       ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
     ).removeClass("bg-gray-100");
     $(
-      ".inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_add_dates,.inner_open_checkout,.inner_open_checkin"
+      ".inner_open_map_box,.inner_open_guest_box,.inner_open_add_dates,.inner_open_checkout,.inner_open_checkin"
     ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
   });
 
@@ -74,7 +72,7 @@ $(document).ready(function () {
     if (isScrollingUp) {
       if (st === 0) {
         $(".mini_box").hide();
-        deactivesearch();
+     
         $(".desktop_secreen_content").show();
         $(".catogories_filter").css({
           "box-shadow": "none",
@@ -87,7 +85,7 @@ $(document).ready(function () {
         "box-shadow": "0px 10px 10px -3px rgba(128, 128, 128, 0.492)",
       });
       $(".mini_box").show();
-      deactivesearch();
+   
       $(".sectioncontent").hide();
       $(".guest_box,.calander_box,.map_box").slideUp();
       sectionActive.mapBox = false;
@@ -100,7 +98,7 @@ $(document).ready(function () {
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");
       $(
-        ".inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_add_date,.inner_open_checkout,.inner_open_checkin"
+        ".inner_open_map_box,.inner_open_guest_box,.inner_open_add_date,.inner_open_checkout,.inner_open_checkin"
       ).removeClass("bg-white rounded-full shadow-lg shadow-gray-600");
     }
 
@@ -142,23 +140,17 @@ $(document).ready(function () {
     $(".open_add_dates").addClass("hidden");
   });
 
-  const sectionActive = {
-    mapBox: false,
-    checkIn: false,
-    checkOut: false,
-    addGuest: false,
-    addDates: false,
-  };
+
 
   $(".open-slide-bar").on("click", function () {
     $(".account-slide-bar").slideToggle();
   });
 
   $(".open_map_box").click(function (e) {
-    activesearch();
+
     $(".guest_box,.calander_box").slideUp();
     $(
-      ".inner_open_add_date,.inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
+      ".inner_open_add_date,.inner_open_map_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
     ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
 
     $(".inner_open_map_box").addClass(
@@ -185,49 +177,81 @@ $(document).ready(function () {
           false;
     }
   });
-  function activesearch() {
-    $(".deaktop_search").removeClass("bg-gray-400");
-    $(".deaktop_search").addClass("bg-red-600");
-    $(".deaktop_search").css({
-      "box-shadow": "1px 1px 10px 5px rgba(225, 54, 54, 0.943)",
-      border: "1px solid rgba(210, 31, 31, 0.424)",
-    });
-  }
 
   $(".open_calander_box").click(function (e) {
     $(".map_box").slideUp();
     $(".guest_box").slideUp();
-    activesearch();
+
     $(
-      ".inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
+      ".inner_open_map_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
     ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
-    $(".inner_open_calander_box").addClass(
-      " bg-white  rounded-full shadow-lg shadow-gray-600"
-    );
+
     $(".open_map_box,.open_calander_box,.open_guest_box").addClass(
       "bg-gray-100"
     );
 
-    $(".calander_box").slideDown();
+    $(".calander_box").slideToggle();
   });
   $(".open_checkin").click(function () {
-    activesearch();
+    
     $(".inner_open_checkin").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
+
+
+
+    if (sectionActive.checkIn == true) {
+      $(
+        ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
+      ).removeClass("bg-gray-100");
+      $(".inner_open_checkin").removeClass(
+        " bg-white  rounded-full shadow-lg shadow-gray-600"
+      );
+      sectionActive.mapBox = false;
+    } else {
+      sectionActive.checkIn = true;
+      sectionActive.mapBox =
+        sectionActive.checkOut =
+        sectionActive.addGuest =
+        sectionActive.addDates =
+          false;
+    }
+
+
+
+
+
+
+
   });
   $(".open_checkout").click(function () {
     $(".inner_open_checkout").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
+    if (sectionActive.checkOut == true) {
+      $(
+        ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
+      ).removeClass("bg-gray-100");
+      $(".inner_open_checkin").removeClass(
+        " bg-white  rounded-full shadow-lg shadow-gray-600"
+      );
+      sectionActive.mapBox = false;
+    } else {
+      sectionActive.checkOut = true;
+      sectionActive.mapBox =
+        sectionActive.checkIn =
+        sectionActive.addGuest =
+        sectionActive.addDates =
+          false;
+    }
   });
 
   $(".open_guest_box").click(function (e) {
-    activesearch();
+
     $(".map_box").slideUp();
     $(".calander_box").slideUp();
     $(
-      ".inner_open_add_date,.inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
+      ".inner_open_add_date,.inner_open_map_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
     ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
     $(
       ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
@@ -250,11 +274,10 @@ $(document).ready(function () {
     }
   });
   $(".open_add_dates").click(function () {
-    activesearch();
     $(".map_box").slideUp();
     $(".guest_box").slideUp();
     $(
-      ".inner_open_add_date,.inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
+      ".inner_open_add_date,.inner_open_map_box,.inner_open_guest_box,.inner_open_checkout,.inner_open_checkin"
     ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
     $(".open_map_box,.open_guest_box,.open_add_dates").addClass("bg-gray-100");
     $(".inner_open_add_date").addClass(
@@ -266,7 +289,7 @@ $(document).ready(function () {
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");
       $(
-        ".inner_open_map_box,.inner_open_calander_box,.inner_open_guest_box,.inner_open_add_date"
+        ".inner_open_map_box,.inner_open_guest_box,.inner_open_add_date"
       ).removeClass(" bg-white  rounded-full shadow-lg shadow-gray-600");
       sectionActive.addDates = false;
     } else {
@@ -743,12 +766,22 @@ $(document).ready(function () {
     }
 
     if (selectedDates[0]) {
-      let value = selectedDates[0].day +" " +selectedDates[0].month +" " +selectedDates[0].year;
+      let value =
+        selectedDates[0].day +
+        " " +
+        selectedDates[0].month +
+        " " +
+        selectedDates[0].year;
       $(".startingDate").val(value);
       $("#checkin").val(value);
     }
     if (selectedDates[1]) {
-      let value = selectedDates[1].day +" " +selectedDates[1].month +" " +selectedDates[ 1 ].year;
+      let value =
+        selectedDates[1].day +
+        " " +
+        selectedDates[1].month +
+        " " +
+        selectedDates[1].year;
       $(".endingDate").val(value);
       $("#checkout").val(value);
     }
