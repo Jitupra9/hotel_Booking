@@ -36,9 +36,9 @@ ob_start();
             <div class=" hidden  w-full sm:flex justify-center ">
                 <?php include_once 'splicode/desktop.php'; ?>
             </div>
-            <div class="catogories_filter flex w-full justify-center items-center border border-gray-200">
+            <div class="catogories_filter flex w-full justify-center items-center ">
                 <div
-                    class="catogorys py-2 text-gray-500 flex text-sm items-center space-x-6 sm:space-x-5 lg:space-x-10 overflow-hidden overflow-x-scroll scrollbar-hide sm:mr-5">
+                    class="catogorys py-2 text-gray-500 flex text-sm items-center space-x-5 sm:space-x-5 lg:space-x-10 overflow-hidden overflow-x-scroll scrollbar-hide sm:mr-5">
                     <div class=" cursor-pointer new flex flex-col space-y-4 text-red-500 text-center ">
                         <i class="fa-regular fa-snowflake text-lg"></i>
                         <p>New</p>
@@ -156,7 +156,7 @@ ob_start();
 
         <div class="all_rooms  md:px-20">
             <section class=" rooms_main_parant text-gray-600 body-font pt-32 sm:pt-72 md:pt-60 lg:pt-64">
-                <div class="inner_parant_room px-5 mx-auto">
+                <div class="inner_parant_room px-2 mx-auto">
                     <div class="flex flex-wrap -m-4 ">
                         <?php
                         include_once 'config/coon.php';
@@ -248,35 +248,26 @@ ob_start();
                                     <a class="block relative h-48 rounded overflow-hidden" href="home/room_details/room_details.php?<?php
                                     echo $row['property_id']
                                         ?>">
-                                        <i class="text-2xl fa-solid fa-heart absolute right-4 top-4"
-                                            style="color: #ffffff;"></i>
-                                        <img alt="Hotel Photo" class="object-cover 
+                                        <i class="text-2xl fa-solid fa-heart absolute right-4 top-4  text-black opacity-50"
+                                            ></i>
+                                        <img alt="Hotel Photo" class="object-cover rounded-2xl 
                                     object-center w-full h-full" src="<?php
                                     echo $image_path;
                                     ?> ">
                                     </a>
                                     <div class="mt-4">
-                                        <p><?php
-                                        echo $row['Property_type'];
-                                        ?></p>
                                         <div class="flex justify-between">
                                             <h3 class=""><?php
                                             echo $row['property_name']
                                                 ?></h3>
-                                            <a href="home/room_details/room_details.php?property_id=<?php
-                                            echo $row['property_id']
-                                                ?>" class="text-blue-500">View Details</a>
+                                            </p>
+
+                                            <p class=""><i class="fa-solid fa-star  text-xs"></i> 5</p>
                                         </div>
-                                        <p class="my-1"> <i class="fa-solid fa-location-dot" style="color: #ff0019;"></i><?php
+                                        <p class="my-1"><?php
                                         echo $row['location']
-                                            ?></p>
-                                        <div class="flex justify-between">
-                                            <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5 (<a href="/"
-                                                    class="text-blue-500"> 114 reviews</a>)</p>
-                                            <p class="">$<?php
-                                            echo $row['price']
-                                                ?>/Night</p>
-                                        </div>
+                                            ?>
+                                            <p><span class=" font-bold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i><?php echo $row['price'] ?> </span>night</p>
                                     </div>
                                 </div>
                                 <?php
@@ -303,7 +294,7 @@ ob_start();
             <?php include_once 'foooter-header/footer.php'; ?>
         </div>
 
-        <div class="lower_nav flex sm:hidden justify-around ">
+        <!-- <div class="lower_nav flex sm:hidden justify-around ">
             <i class="fa-solid fa-arrow-up-from-bracket lowerNaveClose"></i>
             <div class="explore hidden">
                 <a href="index.php"><i class="fa-solid fa-magnifying-glass"></i>
@@ -315,13 +306,14 @@ ob_start();
                             <p>Profile</p>
                         </a></div>
                 <?php else: ?>
-                    <div class="login "><a href="home/Login-Logout-signup/Login/autologin.php"><i class="fa-regular fa-user"></i>
+                    <div class="login "><a href="home/Login-Logout-signup/Login/autologin.php"><i
+                                class="fa-regular fa-user"></i>
                             <p>Login</p>
                         </a></div>
                 <?php endif; ?>
             </div>
             <i class="fa-solid fa-arrow-right-from-bracket openLowerNav"></i>
-        </div>
+        </div> -->
 
 
         <script>

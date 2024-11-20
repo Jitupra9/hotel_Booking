@@ -1,4 +1,4 @@
-<div class="nav w-full ">
+<div class="nav w-full  ">
     <div class="top_header justify-between w-full hidden sm:flex items-center pt-4  mb-5 ">
         <div class="logo text-green-600 text-5xl sm:text-2xl font-bold "><i class="fa-solid fa-feather-pointed"></i>
             MyHome
@@ -57,7 +57,7 @@
 
 
     <div class="mobile_header ">
-        <div class="top_search_box border-2  whitespace-nowrap">
+        <div class="top_search_box  whitespace-nowrap">
             <svg class="filter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 
                 <path
