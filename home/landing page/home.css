@@ -42,6 +42,9 @@
 
   border-radius: 19px;
 }
+.filterOpen{
+  box-shadow:1px 1px 20px 1px rgb(6, 58, 40);
+}
 .inner_filter{
   padding: 5%;
 }
@@ -158,6 +161,9 @@
       right:0%;
       box-shadow:none;
       border-radius: 19px;
+    }
+    .filterOpen{
+      box-shadow:none;
     }
     .inner_filter{
       padding: 5%;

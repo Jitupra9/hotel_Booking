@@ -3,10 +3,12 @@
                 class=" inner_filter px-2 relative h-full bg-white  sm:rounded-xl  sm:px-5 overflow-hidden overflow-y-scroll scrollbar-hide">
                 <div class="relative px-2 ">
                     <div class="filter-header py-5 offFilter cursor-pointer">
+                        <button>
                         <svg class="w-5 h-5 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <path
                                 d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
                         </svg>
+                        </button>
                         <h3 class="font-bold text-black text-xl text-center">Filters</h3>
                     </div>
                     <hr class=" border">
@@ -22,7 +24,7 @@
                             room</div>
                         <div
                             class=" entier-home rounded-r-xl hover:bg-black w-1/3 hover:text-white px-5  flex items-center justify-center">
-                            <h1>Entire Home</h1>
+                            <h1>Home</h1>
                         </div>
                     </div>
                     <script>
@@ -49,34 +51,35 @@
                         <hr class="my-8 border">
                         <h1 class="text-2xl font-bold mt-5">Room and beds</h1>
                         <p class="my-6">Bedroom</p>
-                        <div class="bedrrom flex flex-wrap space-x-2 space-y-2">
+                        <div class="bedrrom flex flex-wrap space-x-2
+                         space-y-2">
                             <span></span>
                             <button
                                 class="badroom-any bg-black text-white border-2 border-gray-400 rounded-2xl px-6 py-2">Any</button>
-                            <button class="badroom-one rounded-2xl px-6 py-2 border-2 border-gray-400">1</button>
-                            <button class="badroom-two rounded-2xl px-6 py-2 border-2 border-gray-400">2</button>
-                            <button class="badroom-three rounded-2xl px-6 py-2 border-2 border-gray-400">3</button>
-                            <button class="badroom-four rounded-2xl px-6 py-2 border-2 border-gray-400">4</button>
+                            <button class="badroom-one rounded-2xl px-5 py-2 border-2 border-gray-400">1</button>
+                            <button class="badroom-two rounded-2xl px-5 py-2 border-2 border-gray-400">2</button>
+                            <button class="badroom-three rounded-2xl px-5 py-2 border-2 border-gray-400">3</button>
+                            <button class="badroom-four rounded-2xl px-5 py-2 border-2 border-gray-400">4</button>
                         </div>
                         <p class="my-6">Beds</p>
                         <div class="beds flex flex-wrap space-x-2 space-y-2">
                             <span></span>
                             <button
                                 class="bads-any bg-black text-white border-2 border-gray-400 rounded-2xl px-6 py-2">Any</button>
-                            <button class="bads-one rounded-2xl px-6 py-2 border-2 border-gray-400">1</button>
-                            <button class="bads-two rounded-2xl px-6 py-2 border-2 border-gray-400">2</button>
-                            <button class="bads-three rounded-2xl px-6 py-2 border-2 border-gray-400">3</button>
-                            <button class="bads-four rounded-2xl px-6 py-2 border-2 border-gray-400">4</button>
+                            <button class="bads-one rounded-2xl px-5 py-2 border-2 border-gray-400">1</button>
+                            <button class="bads-two rounded-2xl px-5 py-2 border-2 border-gray-400">2</button>
+                            <button class="bads-three rounded-2xl px-5 py-2 border-2 border-gray-400">3</button>
+                            <button class="bads-four rounded-2xl px-5 py-2 border-2 border-gray-400">4</button>
                         </div>
                         <p class="my-6">Bathroom</p>
                         <div class="bathroom flex flex-wrap space-x-2 space-y-2">
                             <span></span>
                             <button
                                 class=" bathroom-any bg-black text-white border-2 border-gray-400 rounded-2xl px-6 py-2">Any</button>
-                            <button class="bathroom-one rounded-2xl px-6 py-2 border-2 border-gray-400">1</button>
-                            <button class="bathroom-two rounded-2xl px-6 py-2 border-2 border-gray-400">2</button>
-                            <button class="bathroom-three rounded-2xl px-6 py-2 border-2 border-gray-400">3</button>
-                            <button class="bathroom-four rounded-2xl px-6 py-2 border-2 border-gray-400">4</button>
+                            <button class="bathroom-one rounded-2xl px-5 py-2 border-2 border-gray-400">1</button>
+                            <button class="bathroom-two rounded-2xl px-5 py-2 border-2 border-gray-400">2</button>
+                            <button class="bathroom-three rounded-2xl px-5 py-2 border-2 border-gray-400">3</button>
+                            <button class="bathroom-four rounded-2xl px-5 py-2 border-2 border-gray-400">4</button>
                         </div>
 
                         <h1 class="font-bold text-2xl my-10 mb-5">Top-tier stays</h1>

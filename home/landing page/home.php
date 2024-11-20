@@ -125,7 +125,7 @@ ob_start();
                 </div>
                 <div class=" hidden cursor-pointer sm:flex ">
                     <div
-                        class=" filterOpen rounded-xl overflow-hidden w-24 py-5 bg-green-600 border border-gray-300 flex gap-3 items-center justify-center ">
+                        class=" filterOpen rounded-xl overflow-hidden w-24 py-5 bg-green-600  flex gap-3 items-center justify-center ">
                         <i class="fa-regular fa-pen-to-square  text-white "></i>
                         <i class='fa-solid fa-check hidden  text-white '></i>
                         <p class="font-semibold text-sm text-white">Filters</p>
@@ -248,13 +248,18 @@ ob_start();
                                     <a class="block relative h-48 rounded overflow-hidden" href="home/room_details/room_details.php?<?php
                                     echo $row['property_id']
                                         ?>">
-                                        <i class="text-2xl fa-solid fa-heart absolute right-4 top-4  text-black opacity-50"
-                                            ></i>
+                                        <div class="absolute top-4 w-full px-2 flex justify-between">
+                                     <p class="bg-white rounded-full px-2 py-1 text-gray-500 ">Guset favourite</p>
+                                        <i class="text-2xl fa-solid fa-heart text-black opacity-60 "></i>
+
+                                        </div>
                                         <img alt="Hotel Photo" class="object-cover rounded-2xl 
                                     object-center w-full h-full" src="<?php
                                     echo $image_path;
                                     ?> ">
+
                                     </a>
+
                                     <div class="mt-4">
                                         <div class="flex justify-between">
                                             <h3 class=""><?php
@@ -262,12 +267,14 @@ ob_start();
                                                 ?></h3>
                                             </p>
 
-                                            <p class=""><i class="fa-solid fa-star  text-xs"></i> 5</p>
+                                            <p class=""><i class="fa-solid fa-star  text-xs"></i> 5 (316)</p>
                                         </div>
                                         <p class="my-1"><?php
                                         echo $row['location']
                                             ?>
-                                            <p><span class=" font-bold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i><?php echo $row['price'] ?> </span>night</p>
+                                        <p><span class=" font-bold"><i
+                                                    class="fa-solid fa-indian-rupee-sign text-xs"></i><?php echo $row['price'] ?>
+                                            </span>night</p>
                                     </div>
                                 </div>
                                 <?php
