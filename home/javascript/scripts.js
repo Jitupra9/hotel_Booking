@@ -198,14 +198,15 @@ $(document).ready(function () {
       "bg-gray-100"
     );
 
-    $(".calander_box").slideToggle();
   });
   $(".open_checkin").click(function () {
     $(".inner_open_checkin").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
-
+    $(".calander_box").slideDown();
+   
     if (sectionActive.checkIn == true) {
+      $(".calander_box").slideUp();
       $(
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");
@@ -226,7 +227,11 @@ $(document).ready(function () {
     $(".inner_open_checkout").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
+    $(".calander_box").slideDown();
+    
     if (sectionActive.checkOut == true) {
+      $(".calander_box").slideUp();
+
       $(
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");
@@ -280,8 +285,9 @@ $(document).ready(function () {
     $(".inner_open_add_date").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
-    $(".calander_box").slideToggle();
+    $(".calander_box").slideDown();
     if (sectionActive.addDates == true) {
+      $(".calander_box").slideUp();
       $(
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");

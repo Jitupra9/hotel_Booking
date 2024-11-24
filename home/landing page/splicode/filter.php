@@ -183,14 +183,10 @@
                                 <input type="text" id="propertyTtpe" name="propertyTtpe">
                             </div>
                             <div class=" w-full px-4 py-10 flex justify-between mt-5 mb-2 items-center">
-                                <a class="reset_filter cursor-pointer font-bold" <?php
-                                if (isset($_POST['submitFilter'])) {
-                                    echo "href='index.php'";
-                                }
-                                ?>>clear all</a>
+                                <a class="reset_filter cursor-pointer font-bold">clear all</a>
 
-                                <input type="submit" value="show all" name="submitFilter"
-                                    class=" cursor-pointerq submit_filter bg-black px-4 py-2 font-bold border rounded-xl text-white">
+                                <button  value="show all"
+                                    class=" cursor-pointerq submit_filter bg-black px-4 py-2 font-bold border rounded-xl text-white">show all</button>
                             </div>
                         </form>
                     </div>
