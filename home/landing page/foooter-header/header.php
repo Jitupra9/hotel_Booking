@@ -130,15 +130,7 @@
                             <p class=" font-semibold text-gray-800">Who</p>
                             <p class="text-gray-500">Add guests</p>
                         </div>
-                        <script>
-                            $(".placename").on('input', function () {
-                                alert("please not enter any address , may be your selected address not avilable in our database")
-                                let searchval = $(this).val();
-                                $(".placenames").val(searchval);
-                            });
-                        </script>
-                        <form action="" method="POST">
-                            <input type="text" class=" hidden  placenames" name="placeName">
+                        <div>
                             <input type="text" name="stdate" id="checkin" class=" hidden">
                             <input type="text" name="enddate" id="checkout" class=" hidden">
                             <input type="number" class=" hidden adultcounts" name="noadult">
@@ -149,7 +141,7 @@
                                 class="deaktop_search sm:w-9 sm:h-9 lg:w-10 lg:h-10 flex justify-center items-center bg-gray-400 rounded-full text-white text-xl">
                                 <i class='fa-solid fa-magnifying-glass'></i>
                             </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

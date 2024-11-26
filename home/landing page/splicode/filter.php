@@ -27,9 +27,6 @@
                             <h1>Home</h1>
                         </div>
                     </div>
-                    <script>
-                        $("button").preventDefault();
-                    </script>
                     <div>
                         <hr class="my-8 border">
                         <h1 class=" mb-1 font-bold text-2xl">Price range</h1>

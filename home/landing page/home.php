@@ -40,71 +40,71 @@ ob_start();
                 <div
                     class="catogorys py-2 text-gray-500 flex text-sm items-center space-x-5 sm:space-x-5 lg:space-x-10 overflow-hidden overflow-x-scroll scrollbar-hide sm:mr-5">
                     <script>
-                        const categories = [{
-                                icon: "fa-snowflake",
-                                name: "New",
-                                color: "text-red-500"
-                            },
-                            {
-                                icon: "fa-person-swimming",
-                                name: "Pools"
-                            },
-                            {
-                                icon: "fa-umbrella-beach",
-                                name: "Beach"
-                            },
-                            {
-                                icon: "fa-water",
-                                name: "Lake"
-                            },
-                            {
-                                icon: "fa-fire",
-                                name: "Trending"
-                            },
-                            {
-                                icon: "fa-mountain-city",
-                                name: "Hill"
-                            },
-                            {
-                                icon: "fa-tree-city",
-                                name: "Tree"
-                            },
-                            {
-                                icon: "fa-igloo",
-                                name: "Caves"
-                            },
-                            {
-                                icon: "fa-wand-magic-sparkles",
-                                name: "Luxury"
-                            },
-                            {
-                                icon: "fa-landmark-dome",
-                                name: "Domes"
-                            },
-                            {
-                                icon: "fa-person-skating",
-                                name: "Iceland"
-                            },
-                            {
-                                icon: "fa-tent",
-                                name: "Camping"
-                            },
-                            {
-                                icon: "fa-house-user",
-                                name: "Room"
-                            },
-                            {
-                                icon: "fa-pagelines",
-                                name: "Desert"
-                            }
+                        const categories = [ {
+                            icon: "fa-snowflake",
+                            name: "New",
+                            color: "text-red-500"
+                        },
+                        {
+                            icon: "fa-person-swimming",
+                            name: "Pools"
+                        },
+                        {
+                            icon: "fa-umbrella-beach",
+                            name: "Beach"
+                        },
+                        {
+                            icon: "fa-water",
+                            name: "Lake"
+                        },
+                        {
+                            icon: "fa-fire",
+                            name: "Trending"
+                        },
+                        {
+                            icon: "fa-mountain-city",
+                            name: "Hill"
+                        },
+                        {
+                            icon: "fa-tree-city",
+                            name: "Tree"
+                        },
+                        {
+                            icon: "fa-igloo",
+                            name: "Caves"
+                        },
+                        {
+                            icon: "fa-wand-magic-sparkles",
+                            name: "Luxury"
+                        },
+                        {
+                            icon: "fa-landmark-dome",
+                            name: "Domes"
+                        },
+                        {
+                            icon: "fa-person-skating",
+                            name: "Iceland"
+                        },
+                        {
+                            icon: "fa-tent",
+                            name: "Camping"
+                        },
+                        {
+                            icon: "fa-house-user",
+                            name: "Room"
+                        },
+                        {
+                            icon: "fa-pagelines",
+                            name: "Desert"
+                        }
                         ];
 
                         $(document).ready(() => {
                             categories.forEach(({
-                                    icon,
-                                    name,
-                                    color = "text-black"
-                                }) =>
+                                icon,
+                                name,
+                                color = "text-black"
+                            }) =>
                                 $(".catogorys").append(`
                     <div class="cursor-pointer ${name.toLowerCase()}_icon flex flex-col space-y-4 text-center">
                         <i class="fa-solid ${icon} text-lg"></i>
@@ -131,43 +131,70 @@ ob_start();
             <section class=" rooms_main_parant text-gray-600 body-font pt-32 sm:pt-72 md:pt-60 lg:pt-64">
                 <div class="inner_parant_room px-2 mx-auto">
                     <div class="allrooms flex flex-wrap -m-4 justify-center px-3 sm:px-0">
-                        <div class="sm:hidden border-2 w-full mx-2 mt-5 text-center font-bold border-gray-500 rounded-2xl p-5">
+                        <div
+                            class="sm:hidden border-2 w-full mx-2 mt-5 text-center font-bold border-gray-500 rounded-2xl p-5">
                             Price including Tax <i class="fa-solid fa-toggle-on"></i>
                         </div>
                     </div>
                     <script>
-                        $(document).ready(function() {
-                            $.ajax({
-                                url: "backend/room-fetch.php",
-                                type: "POST",
-                                dataType: "JSON",
-                                success: function(response) {
-                                    response.forEach(element => {
-                                        const room = `
-                                            <div class="proeprty-details w-full  sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
-                                                <div class="images  relative">
-                                                    <div class="absolute top-3 w-full flex justify-between px-2">
-                                                        <p class="bg-white rounded-full px-2">Guest Favorite</p>
-                                                        <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
-                                                    </div>
-                                                    <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
+                        $(document).ready(function () {
+                            const renderRooms = (rooms) => {
+                                $(".allrooms").empty();
+                                rooms.forEach(element => {
+                                    const room = `
+                                        <div class="proeprty-details w-full sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
+                                            <div class="images relative">
+                                                <div class="absolute top-3 w-full flex justify-between px-2">
+                                                    <p class="bg-white rounded-full px-2">Guest Favorite</p>
+                                                    <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
                                                 </div>
-                                                <div class="details p-1">
-                                                    <div class="flex justify-between font-bold">
-                                                        <p class="text-gray-700">${element.Title}</p>
-                                                        <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5</p>
-                                                    </div>
-                                                    <p>${element.location}</p>
-                                                    <p>${element.price} rupees</p>
+                                                <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
+                                            </div>
+                                            <div class="details p-1">
+                                                <div class="flex justify-between font-bold">
+                                                    <p class="text-gray-700">${element.Title}</p>
+                                                    <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5</p>
                                                 </div>
-                                            </div>`;
-
-                                        $(".allrooms").append(room);
-                                    });
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error("Error fetching data:", error);
-                                }
+                                                <p>${element.locations}</p>
+                                                <p>${element.price} rupees</p>
+                                            </div>
+                                        </div>`;
+                                    $(".allrooms").append(room);
+                                });
+                                console.log(rooms);
+                            };
+                            const fetchRooms = (searchData = {}) => {
+                                $.ajax({
+                                    url: "backend/room-fetch.php",
+                                    type: searchData ? "POST" : "GET",
+                                    data: searchData ? { placename: searchData.placename,
+                                        stdate:searchData.checkin,
+                                        enddate:searchData.checkout,
+                                        noadult:searchData.adult,
+                                        nochild:searchData.child,
+                                        nopets:searchData.pet,
+                                     } : {},
+                                    dataType: "JSON",
+                                    success: function (response) {
+                                        renderRooms(response);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.error("Error fetching rooms:", error);
+                                    }
+                                });
+                            };
+                            fetchRooms();
+                            $(".deaktop_search").on("click", () => {
+                                let searchData = {
+                                    place: $(".placename").val(),
+                                    checkin: $("#checkin").val(), 
+                                    checkout: $("#checkout").val(),
+                                    adult: $(".adultcounts").val(), 
+                                    child: $(".childcounts").val(),
+                                    pet: $(".petcounts").val(), 
+                                }                               
+                                fetchRooms(searchData);
+                                // renderRooms(searchData);
                             });
                         });
                     </script>
@@ -205,7 +232,7 @@ ob_start();
 
         <script>
             $(".fa-arrow-up-from-bracket").hide();
-            $('.openLowerNav').click(function() {
+            $('.openLowerNav').click(function () {
                 $(".lower_nav").css({
                     "border-radius": "0%",
                     "bottom": "0%",

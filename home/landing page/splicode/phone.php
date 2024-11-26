@@ -357,6 +357,7 @@
                             <input type="text" class="hidden serchInputdata" name="placeName">
                             <input type="text" class="hidden startingDate" name="stdate">
                             <input type="text" class="hidden endingDate" name="enddate">
+                            
                             <input type="number" class="hidden adultcount" name="noadult">
                             <input type="number" class="hidden ChildrenCount" name="nochildren">
                             <input type="number" class="hidden infantsCount" name="noinfants">
