@@ -33,6 +33,8 @@ ob_start();
     <div class="py-7 book_containe">
         <div class="header top-0 fixed bg-white  pt-2 w-full z-50  ">
             <?php include_once 'foooter-header/header.php' ?>
+            <?php include_once 'splicode/phone.php' ?>
+            <?php include_once 'splicode/filter.php' ?>
             <div class=" hidden  w-full sm:flex justify-center ">
                 <?php include_once 'splicode/desktop.php'; ?>
             </div>
@@ -137,43 +139,55 @@ ob_start();
                         </div>
                     </div>
                     <script>
+
                         $(document).ready(function () {
+                            let searchData = {}; // Define searchData at the top for global access
+
                             const renderRooms = (rooms) => {
                                 $(".allrooms").empty();
                                 rooms.forEach(element => {
                                     const room = `
-                                        <div class="proeprty-details w-full sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
-                                            <div class="images relative">
-                                                <div class="absolute top-3 w-full flex justify-between px-2">
-                                                    <p class="bg-white rounded-full px-2">Guest Favorite</p>
-                                                    <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
-                                                </div>
-                                                <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
-                                            </div>
-                                            <div class="details p-1">
-                                                <div class="flex justify-between font-bold">
-                                                    <p class="text-gray-700">${element.Title}</p>
-                                                    <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5</p>
-                                                </div>
-                                                <p>${element.locations}</p>
-                                                <p>${element.price} rupees</p>
-                                            </div>
-                                        </div>`;
+                                <div class="proeprty-details w-full sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
+                                    <div class="images relative">
+                                        <div class="absolute top-3 w-full flex justify-between px-2">
+                                            <p class="bg-white rounded-full px-2">Guest Favorite</p>
+                                            <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
+                                        </div>
+                                        <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
+                                    </div>
+                                    <div class="details p-1">
+                                        <div class="flex justify-between font-bold">
+                                            <p class="text-gray-700">${element.Title}</p>
+                                            <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5</p>
+                                        </div>
+                                        <p>${element.locations}</p>
+                                          <p>${element.Property_type}</p>
+                                        <p>${element.price} rupees</p>
+                                    </div>
+                                </div>`;
                                     $(".allrooms").append(room);
                                 });
-                                console.log(rooms);
                             };
+
                             const fetchRooms = (searchData = {}) => {
                                 $.ajax({
                                     url: "backend/room-fetch.php",
                                     type: searchData ? "POST" : "GET",
-                                    data: searchData ? { placename: searchData.placename,
-                                        stdate:searchData.checkin,
-                                        enddate:searchData.checkout,
-                                        noadult:searchData.adult,
-                                        nochild:searchData.child,
-                                        nopets:searchData.pet,
-                                     } : {},
+                                    data: searchData ? {
+                                        placename: searchData.place,
+                                        stdate: searchData.checkin,
+                                        enddate: searchData.checkout,
+                                        noadult: searchData.adult,
+                                        nochild: searchData.child,
+                                        nopets: searchData.pet,
+                                        placeType: searchData.placeType, // Added missing property
+                                        minPrice: searchData.minPrice,
+                                        Maxprice: searchData.Maxprice,
+                                        badroom: searchData.badroom,
+                                        beds: searchData.beds,
+                                        bathroom: searchData.bathroom,
+                                        propertyTtpe: searchData.propertyTtpe
+                                    } : {},
                                     dataType: "JSON",
                                     success: function (response) {
                                         renderRooms(response);
@@ -182,21 +196,49 @@ ob_start();
                                         console.error("Error fetching rooms:", error);
                                     }
                                 });
-                            };
-                            fetchRooms();
+                                console.log(searchData);
+                            }; 
+                            fetchRooms(searchData);
+
                             $(".deaktop_search").on("click", () => {
-                                let searchData = {
+                                searchData = {
                                     place: $(".placename").val(),
-                                    checkin: $("#checkin").val(), 
+                                    checkin: $("#checkin").val(),
                                     checkout: $("#checkout").val(),
-                                    adult: $(".adultcounts").val(), 
+                                    adult: $(".adultcounts").val(),
                                     child: $(".childcounts").val(),
-                                    pet: $(".petcounts").val(), 
-                                }                               
+                                    pet: $(".petcounts").val(),
+                                    placeType: "", 
+                                    minPrice: "", 
+                                    Maxprice: "", 
+                                    badroom: "",
+                                    beds: "", 
+                                    bathroom: "",
+                                    propertyTtpe: "" 
+                                };
                                 fetchRooms(searchData);
-                                // renderRooms(searchData);
                             });
+
+                            $(".submitfilter").click(() => {
+                                const filterData = {
+                                    placeType: $("#type_place").val(),
+                                    minPrice: $("#minPrice").val(),
+                                    Maxprice: $("#Maxprice").val(),
+                                    badroom: $("#badroom").val(),
+                                    beds: $("#beds").val(),
+                                    bathroom: $("#bathroom").val(),
+                                    propertyTtpe: $("#propertyTtpe").val(),
+                                };
+                                const combinedData = { ...searchData, ...filterData };
+                                fetchRooms(combinedData);
+                                console.log(combinedData);
+                            });
+                            $(".reset_filter").click(()=>{
+
+                            })
                         });
+
+
                     </script>
 
                 </div>
@@ -255,8 +297,6 @@ ob_start();
                 $(".explore, .profileStatus,.fa-arrow-up-from-bracket").hide();
             })
         </script>
-        <?php include_once 'splicode/phone.php' ?>
-        <?php include_once 'splicode/filter.php' ?>
     </div>
 </body>
 

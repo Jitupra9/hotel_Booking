@@ -580,7 +580,7 @@ $(document).ready(function () {
   const handleInput = () => {
     const minPrise = $(".min_val").val();
     const maxPrise = $(".max_val").val();
-    filteration.minPrise = minPrise ? Math.max(minPrise, 500) : 500;
+    filteration.minPrise = minPrise ? Math.max(minPrise, 400) : 400;
     filteration.maxPrise = maxPrise > filteration.minPrise ? maxPrise : 7000;
     $("#minPrice").val(filteration.minPrise);
     $("#Maxprice").val(filteration.maxPrise);
@@ -726,19 +726,7 @@ $(document).ready(function () {
     $(".min_val").val("");
   });
 
-  const initialFilteration = { ...filteration };
-  const filterData = new Object();
-  $(".submit_filter").on("click", function () {
-    function printChangedKeys() {
-      for (let key in filteration) {
-        if (filteration[key] !== initialFilteration[key]) {
-          filterData[key] = filterData[key];
-          console.log(`${key}: ${filteration[key]}`);
-        }
-      }
-    }
-    printChangedKeys();
-  });
+
 
   var selectedDates = [];
   bookDetails.checkIN = selectedDates[0];

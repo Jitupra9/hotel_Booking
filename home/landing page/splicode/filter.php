@@ -169,23 +169,25 @@
                                 <input type="checkbox" name="" id="odiaCheckbox">
                             </div>
                         </div>
-                        <form action="" method="POST">
+
                             <div class="hidden">
-                                <input type="text" id="type_place" name="type_place">
-                                <input type="number" id="minPrice" name="minPrice">
-                                <input type="number" id="Maxprice" name="Maxprice">
-                                <input type="number" id="badroom" name="badroom">
-                                <input type="number" id="beds" name="beds">
-                                <input type="number" id="bathroom" name="bathroom">
-                                <input type="text" id="propertyTtpe" name="propertyTtpe">
+                                <input type="text" id="type_place" >
+                                <input type="number" id="minPrice" >
+                                <input type="number" id="Maxprice" >
+                                <input type="number" id="badroom">
+                                <input type="number" id="beds">
+                                <input type="number" id="bathroom">
+                                <input type="text" id="propertyTtpe" >
                             </div>
                             <div class=" w-full px-4 py-10 flex justify-between mt-5 mb-2 items-center">
                                 <a class="reset_filter cursor-pointer font-bold">clear all</a>
 
                                 <button  value="show all"
-                                    class=" cursor-pointerq submit_filter bg-black px-4 py-2 font-bold border rounded-xl text-white">show all</button>
+                                    class=" cursor-pointer submitfilter bg-black px-4 py-2 font-bold border rounded-xl text-white">show all</button>
                             </div>
-                        </form>
+                            <script>
+
+                            </script>
                     </div>
                 </div>
             </div>
