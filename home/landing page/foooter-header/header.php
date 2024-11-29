@@ -92,8 +92,8 @@
             <h3 class=" stay cursor-pointer text-black">Stays</h3>
             <h3 class=" experiences cursor-pointer">Experiences</h3>
         </div>
-        <div class=" hidden sm:flex header_two py-5">
-            <div class="inner_header_two ">
+        <div class=" hidden sm:flex header_two py-5 ">
+            <div class="inner_header_two relative ">
                 <div class="cursor-pointer open_map_box  overflow-hidden  hover:bg-gray-100 rounded-l-full">
                     <div class="inner_open_map_box  px-5 h-full lg:px-14 bg-transparent  py-2  flex justify-center  flex-col">
                         <p class=" font-semibold text-gray-800">Where</p>
@@ -123,7 +123,7 @@
                         <p class="text-gray-500">Add date</p>
                     </div>
                 </div>
-                <div class=" cursor-pointer open_guest_box overflow-hidden  hover:bg-gray-200 rounded-r-full">
+                <div class=" relative cursor-pointer open_guest_box overflow-hidden  hover:bg-gray-200 rounded-r-full">
                     <div
                         class="inner_open_guest_box   h-full  px-5 lg:px-8 py-2   bg-transparent flex items-center gap-16 ">
                         <div>
@@ -137,14 +137,15 @@
                             <input type="number" class="hidden childcounts" name="nochildren">
                             <input type="number" class="hidden infantcounts" name="noinfants">
                             <input type="number" class="hidden petcounts" name="nopets">
-                            <button type="submit" name="searchroom"
-                                class="deaktop_search sm:w-9 sm:h-9 lg:w-10 lg:h-10 flex justify-center items-center bg-gray-400 rounded-full text-white text-xl">
+                            <button 
+                                class="deaktop_search relative sm:w-9 sm:h-9 lg:w-10 lg:h-10 flex justify-center items-center  rounded-full text-xl">
                                 <i class='fa-solid fa-magnifying-glass'></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <p class=" search_dlt"><i class=" search_dlt cursor-pointer fa-solid fa-delete-left"></i></p>
         </div>
     </div>
 </div>

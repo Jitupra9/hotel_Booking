@@ -1,4 +1,8 @@
 
+
+.search_dlt{
+  display: none;
+}
 .top_search_box{
     display: flex;
     justify-content: center;
@@ -70,7 +74,9 @@
 }
 .deaktop_search{
   box-shadow: 1px 1px 10px 5px rgba(92, 89, 89, 0.461);
-  border: 1px solid rgba(114, 110, 110, 0.551);
+  background-color: rgb(132, 130, 130);
+  color: white;
+  text-shadow: 1px 1px 5px white;
 }
 .catogorys div p{
   font-weight:500;

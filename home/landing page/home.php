@@ -22,6 +22,12 @@ ob_start();
             -webkit-appearance: none;
             margin: 0;
         }
+
+        .search_on {
+            background-color: rgb(255, 34, 0);
+            box-shadow: 1px 1px 10px 5px rgba(242, 30, 30, 0.569);
+            color: rgb(252, 203, 202);
+        }
     </style>
 </head>
 
@@ -45,7 +51,6 @@ ob_start();
                         const categories = [ {
                             icon: "fa-snowflake",
                             name: "New",
-                            color: "text-red-500"
                         },
                         {
                             icon: "fa-person-swimming",
@@ -108,13 +113,14 @@ ob_start();
                                 color = "text-black"
                             }) =>
                                 $(".catogorys").append(`
-                    <div class="cursor-pointer ${name.toLowerCase()}_icon flex flex-col space-y-4 text-center">
-                        <i class="fa-solid ${icon} text-lg"></i>
-                        <p class="${color}">${name}</p>
-                    </div>
-                `)
+                                <div class="cursor-pointer ${name.toLowerCase()}_icon flex flex-col space-y-4 text-center">
+                                    <i class="fa-solid ${icon} text-lg"></i>
+                                    <p>${name}</p>
+                                </div>
+                            `)
                             );
                         });
+
                     </script>
                 </div>
 
@@ -139,20 +145,20 @@ ob_start();
                         </div>
                     </div>
                     <script>
-
                         $(document).ready(function () {
-                            let searchData = {}; // Define searchData at the top for global access
+                            let searchData = {};
 
                             const renderRooms = (rooms) => {
                                 $(".allrooms").empty();
                                 rooms.forEach(element => {
                                     const room = `
-                                <div class="proeprty-details w-full sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
+                                <div class="proeprty-details ${element.placeType} w-full sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
                                     <div class="images relative">
                                         <div class="absolute top-3 w-full flex justify-between px-2">
                                             <p class="bg-white rounded-full px-2">Guest Favorite</p>
                                             <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
                                         </div>
+                                    <!-- room images not stored due to large storages need  -->
                                         <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
                                     </div>
                                     <div class="details p-1">
@@ -161,7 +167,6 @@ ob_start();
                                             <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5</p>
                                         </div>
                                         <p>${element.locations}</p>
-                                          <p>${element.Property_type}</p>
                                         <p>${element.price} rupees</p>
                                     </div>
                                 </div>`;
@@ -180,7 +185,7 @@ ob_start();
                                         noadult: searchData.adult,
                                         nochild: searchData.child,
                                         nopets: searchData.pet,
-                                        placeType: searchData.placeType, // Added missing property
+                                        placeType: searchData.placeType,
                                         minPrice: searchData.minPrice,
                                         Maxprice: searchData.Maxprice,
                                         badroom: searchData.badroom,
@@ -197,7 +202,7 @@ ob_start();
                                     }
                                 });
                                 console.log(searchData);
-                            }; 
+                            };
                             fetchRooms(searchData);
 
                             $(".deaktop_search").on("click", () => {
@@ -208,15 +213,17 @@ ob_start();
                                     adult: $(".adultcounts").val(),
                                     child: $(".childcounts").val(),
                                     pet: $(".petcounts").val(),
-                                    placeType: "", 
-                                    minPrice: "", 
-                                    Maxprice: "", 
+                                    placeType: "",
+                                    minPrice: "",
+                                    Maxprice: "",
                                     badroom: "",
-                                    beds: "", 
+                                    beds: "",
                                     bathroom: "",
-                                    propertyTtpe: "" 
+                                    propertyTtpe: ""
                                 };
                                 fetchRooms(searchData);
+                                $(".deaktop_search").addClass("search_on");
+                                $(".search_dlt").show();
                             });
 
                             $(".submitfilter").click(() => {
@@ -229,16 +236,44 @@ ob_start();
                                     bathroom: $("#bathroom").val(),
                                     propertyTtpe: $("#propertyTtpe").val(),
                                 };
-                                const combinedData = { ...searchData, ...filterData };
+                                const combinedData = {
+                                    ...searchData,
+                                    ...filterData
+                                };
                                 fetchRooms(combinedData);
-                                console.log(combinedData);
+
                             });
-                            $(".reset_filter").click(()=>{
+                            $(".reset_filter").click(() => {
+                                const filterData = {
+                                    placeType: null,
+                                    minPrice: null,
+                                    Maxprice: null,
+                                    badroom: null,
+                                    beds: null,
+                                    bathroom: null,
+                                    propertyTtpe: null,
+                                };
+                                const combinedData = {
+                                    ...searchData,
+                                    ...filterData
+                                };
+                                fetchRooms(combinedData);
 
                             })
+                            $(".search_dlt").click(() => {
+                                searchData = {
+                                    place: "",
+                                    checkin: "",
+                                    checkout: "",
+                                    adult: "",
+                                    child: "",
+                                    pet: "",
+                                };
+                                fetchRooms(searchData);
+                                $(".deaktop_search").removeClass("search_on");
+                                $(".search_dlt").hide();
+                            })
                         });
-
-
                     </script>
 
                 </div>
