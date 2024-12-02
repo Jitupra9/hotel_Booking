@@ -1,7 +1,7 @@
 <div class="nav w-full  ">
     <div class="top_header justify-between w-full hidden sm:flex items-center pt-4  mb-5 ">
-        <div class="logo text-green-600 text-5xl sm:text-2xl font-bold "><i class="fa-solid fa-feather-pointed"></i>
-            MyHome
+        <div class="logo text-green-700 text-5xl sm:text-2xl font-bold whitespace-nowrap "><i class="fa-solid fa-feather-pointed"></i>
+            Easy Stay
         </div>
         <div class="mini_box hidden border border-gray-300 sm:mx-3  rounded-full shadow-lg shadow-gray-500 ">
             <div class="flex justify-between items-center">
@@ -15,7 +15,8 @@
             </div>
         </div>
         <div class=" text-gray-700 flex space-x-5 pr-16 items-center">
-            <p class="airbnb-your-home text-2xl sm:text-sm">Airbnb Your home</p><i class="fa-solid fa-globe"></i>
+            <p class="airbnb-your-home text-2xl sm:text-sm cursor-pointer">Airbnb Your home</p><i class="fa-solid fa-globe"></i>
+            <i class="fa-solid screen_light fa-toggle-off text-3xl cursor-pointer"></i>
             <div
                 class="open-slide-bar cursor-pointer border rounded-full flex gap-5 px-3 py-2 justify-center items-center">
                 <i class="fa-solid fa-bars-staggered"></i>
@@ -80,12 +81,6 @@
 
 
 
-
-
-
-
-
-
     <div class="desktop_secreen_content">
         <div class=" header_one hidden sm:flex items-center justify-center space-x-5 lg:-mt-10 text-gray-500 ">
             <h3></h3>
@@ -93,7 +88,7 @@
             <h3 class=" experiences cursor-pointer">Experiences</h3>
         </div>
         <div class=" hidden sm:flex header_two py-5 ">
-            <div class="inner_header_two relative ">
+            <div class="inner_header_two ">
                 <div class="cursor-pointer open_map_box  overflow-hidden  hover:bg-gray-100 rounded-l-full">
                     <div class="inner_open_map_box  px-5 h-full lg:px-14 bg-transparent  py-2  flex justify-center  flex-col">
                         <p class=" font-semibold text-gray-800">Where</p>
@@ -123,7 +118,7 @@
                         <p class="text-gray-500">Add date</p>
                     </div>
                 </div>
-                <div class=" relative cursor-pointer open_guest_box overflow-hidden  hover:bg-gray-200 rounded-r-full">
+                <div class=" cursor-pointer open_guest_box overflow-hidden  hover:bg-gray-200 rounded-r-full">
                     <div
                         class="inner_open_guest_box   h-full  px-5 lg:px-8 py-2   bg-transparent flex items-center gap-16 ">
                         <div>
@@ -137,8 +132,9 @@
                             <input type="number" class="hidden childcounts" name="nochildren">
                             <input type="number" class="hidden infantcounts" name="noinfants">
                             <input type="number" class="hidden petcounts" name="nopets">
+            
                             <button 
-                                class="deaktop_search relative sm:w-9 sm:h-9 lg:w-10 lg:h-10 flex justify-center items-center  rounded-full text-xl">
+                                class="deaktop_search sm:w-9 sm:h-9 lg:w-10 lg:h-10 flex justify-center items-center  rounded-full text-xl">
                                 <i class='fa-solid fa-magnifying-glass'></i>
                             </button>
                         </div>

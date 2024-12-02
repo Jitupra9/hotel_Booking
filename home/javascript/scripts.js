@@ -127,7 +127,6 @@ $(document).ready(function () {
     ).addClass("hidden");
     $(".calendar-container").show();
     $(".open_add_dates").removeClass("hidden");
-
   });
 
   $(".stay").on("click", function () {
@@ -140,7 +139,7 @@ $(document).ready(function () {
     $(".select_date,.pet_div,.open_calander_box ").removeClass("hidden");
     $(".open_add_dates").addClass("hidden");
     if (sectionActive.addDates == true) {
-      $('.calander_box').slideUp();
+      $(".calander_box").slideUp();
       $(
         ".open_map_box,.open_calander_box,.open_guest_box,.open_add_dates"
       ).removeClass("bg-gray-100");
@@ -197,14 +196,13 @@ $(document).ready(function () {
     $(".open_map_box,.open_calander_box,.open_guest_box").addClass(
       "bg-gray-100"
     );
-
   });
   $(".open_checkin").click(function () {
     $(".inner_open_checkin").addClass(
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
     $(".calander_box").slideDown();
-   
+
     if (sectionActive.checkIn == true) {
       $(".calander_box").slideUp();
       $(
@@ -228,7 +226,7 @@ $(document).ready(function () {
       " bg-white  rounded-full shadow-lg shadow-gray-600"
     );
     $(".calander_box").slideDown();
-    
+
     if (sectionActive.checkOut == true) {
       $(".calander_box").slideUp();
 
@@ -725,8 +723,6 @@ $(document).ready(function () {
     $(".max_val").val("");
     $(".min_val").val("");
   });
-
-
 
   var selectedDates = [];
   bookDetails.checkIN = selectedDates[0];

@@ -36,6 +36,7 @@ ob_start();
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="home/javascript/scripts.js?v=<?= $version ?>"></script>
+    <script src="home/javascript/scripts_two.js?v=<?= $version ?>"></script>
     <div class="py-7 book_containe">
         <div class="header top-0 fixed bg-white  pt-2 w-full z-50  ">
             <?php include_once 'foooter-header/header.php' ?>
@@ -50,7 +51,7 @@ ob_start();
                     <script>
                         const categories = [ {
                             icon: "fa-snowflake",
-                            name: "New",
+                            name: "new",
                         },
                         {
                             icon: "fa-person-swimming",
@@ -105,22 +106,34 @@ ob_start();
                             name: "Desert"
                         }
                         ];
-
                         $(document).ready(() => {
-                            categories.forEach(({
-                                icon,
-                                name,
-                                color = "text-black"
-                            }) =>
+                            categories.forEach(({ icon, name }) => {
                                 $(".catogorys").append(`
-                                <div class="cursor-pointer ${name.toLowerCase()}_icon flex flex-col space-y-4 text-center">
-                                    <i class="fa-solid ${icon} text-lg"></i>
-                                    <p>${name}</p>
-                                </div>
-                            `)
-                            );
+                                    <div class="cursor-pointer ${name.toLowerCase()}_icon flex flex-col space-y-4 text-center">
+                                        <i class="fa-solid ${icon} text-lg"></i>
+                                        <p>${name}</p>
+                                    </div>
+                                `);
+                            });
+                            function filterRooms(type) {
+                                $(".property_details").hide();
+                                $("." + type).show();
+                            }
+                            $(".new_icon").click(function () { filterRooms('property_details'); });
+                            $(".pools_icon").click(function () { filterRooms('Pools'); });
+                            $(".beach_icon").click(function () { filterRooms('Beach'); });
+                            $(".lake_icon").click(function () { filterRooms('Lake'); });
+                            $(".trend_icon").click(function () { filterRooms('Trending'); });
+                            $(".mountain_city_icon").click(function () { filterRooms('Hill'); });
+                            $(".tree_house_icon").click(function () { filterRooms('Tree'); });
+                            $(".caves_icon").click(function () { filterRooms('Caves'); });
+                            $(".luxury_icon").click(function () { filterRooms('Luxury'); });
+                            $(".domes_icon").click(function () { filterRooms('Domes'); });
+                            $(".iceland_icon").click(function () { filterRooms('Iceland'); });
+                            $(".camping_icon").click(function () { filterRooms('Camping'); });
+                            $(".room_icon").click(function () { filterRooms('Room'); });
+                            $(".desert_icon").click(function () { filterRooms('Desert'); });
                         });
-
                     </script>
                 </div>
 
@@ -151,8 +164,19 @@ ob_start();
                             const renderRooms = (rooms) => {
                                 $(".allrooms").empty();
                                 rooms.forEach(element => {
+                                    function formatDateRange(availableFrom, availableTo) {
+                                        const monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+                                        const fromDate = new Date(availableFrom);
+                                        const toDate = new Date(availableTo);
+
+                                        const formattedFrom = `${fromDate.getDate()}-${monthNames[ fromDate.getMonth() ]}`;
+                                        const formattedTo = `${toDate.getDate()}-${monthNames[ toDate.getMonth() ]}`;
+
+                                        return `${formattedFrom} to ${formattedTo}`;
+                                    }
                                     const room = `
-                                <div class="proeprty-details ${element.placeType} w-full sm:w-80 border border-gray-500 rounded-2xl font-semibold pb-5 overflow-hidden m-2">
+                                <div class="property_details ${element.place_type} w-full sm:w-80 border border-gray-400 rounded-2xl  pb-5 overflow-hidden m-2">
                                     <div class="images relative">
                                         <div class="absolute top-3 w-full flex justify-between px-2">
                                             <p class="bg-white rounded-full px-2">Guest Favorite</p>
@@ -162,12 +186,13 @@ ob_start();
                                         <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
                                     </div>
                                     <div class="details p-1">
-                                        <div class="flex justify-between font-bold">
-                                            <p class="text-gray-700">${element.Title}</p>
-                                            <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5</p>
+                                        <div class="flex justify-between font-semibold ">
+                                            <p class="text-black ">${element.property_name} in <span class="">${element.locations}</span></p>
+                                            <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5-(312)</p>
                                         </div>
-                                        <p>${element.locations}</p>
-                                        <p>${element.price} rupees</p>
+                                        <p>${element.Description}</p>
+                                        <p>${formatDateRange(element.available_from, element.available_to)}</p>
+                                        <p ><span class="text-black font-semibold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i>${element.price}</span> night</p>
                                     </div>
                                 </div>`;
                                     $(".allrooms").append(room);

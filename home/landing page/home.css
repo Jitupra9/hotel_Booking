@@ -112,7 +112,10 @@
 .room h3{
   font-weight:500;
 }
-
+.dark_box{
+ 
+  color: rgb(181, 174, 174);
+}
 .filter{
   z-index: 60;
 }
