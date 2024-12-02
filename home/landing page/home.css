@@ -21,7 +21,7 @@
 }
 .top_header{
   padding: 0% 5%;
-  margin-right: -50%;
+  margin-right: -5%;
 }
 .past-date {
   pointer-events: none;
@@ -82,10 +82,7 @@
   font-weight:500;
   font-size: 12px;
 }
-.airbnb-your-home{
-  white-space: nowrap;
-  font-weight: 500;
-}
+
 .catogories_filter{
   padding: 0% 5% ;
 }
@@ -100,10 +97,10 @@
   box-shadow: 1px 1px 15px 3px rgba(128, 128, 128, 0.292);
   border-radius: 19px;
   background-color: white;
-  padding:0% 7% ;
+  padding:0% 5% ;
 }
 .account-slide-bar p{
-  margin:30% 0%;
+  margin:20% 0%;
 }
 .room p{
   font-size: 14px;

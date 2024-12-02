@@ -1,5 +1,5 @@
-<div class="nav w-full  ">
-    <div class="top_header justify-between w-full hidden sm:flex items-center pt-4  mb-5 ">
+<div class="nav w-full  bo">
+    <div class="top_header justify-between  hidden sm:flex items-center pt-4  mb-5 ">
         <div class="logo text-green-700 text-5xl sm:text-2xl font-bold whitespace-nowrap "><i class="fa-solid fa-feather-pointed"></i>
             Easy Stay
         </div>
@@ -15,8 +15,7 @@
             </div>
         </div>
         <div class=" text-gray-700 flex space-x-5 pr-16 items-center">
-            <p class="airbnb-your-home text-2xl sm:text-sm cursor-pointer">Airbnb Your home</p><i class="fa-solid fa-globe"></i>
-            <i class="fa-solid screen_light fa-toggle-off text-3xl cursor-pointer"></i>
+            <div class="flex justify-center items-center space-x-2"><p>Mode</p> <i class="fa-solid screen_light fa-toggle-off text-3xl cursor-pointer"></i></div>
             <div
                 class="open-slide-bar cursor-pointer border rounded-full flex gap-5 px-3 py-2 justify-center items-center">
                 <i class="fa-solid fa-bars-staggered"></i>
@@ -31,6 +30,7 @@
     ?>
     <div class="account-slide-bar hidden">
         <p><a href="">Messages</a></p>
+        <p class="airbnb-your-home cursor-pointer"><i class="fa-solid fa-globe"></i> Easy-Stay Abouts</p>
         <p><a href="">Notifications</a></p>
         <p><a href="">Trips</a></p>
         <p><a href="">Whichlist</a></p>
