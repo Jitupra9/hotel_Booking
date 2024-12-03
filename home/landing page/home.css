@@ -1,4 +1,12 @@
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .search_dlt{
   display: none;
@@ -43,7 +51,7 @@
   top: 20%;
   right: 10%;
   box-shadow: 1px 1px 10px 6px rgb(105, 103, 103);
-
+  /* border: 2px solid red; */
   border-radius: 19px;
 }
 .filterOpen{
@@ -51,6 +59,8 @@
 }
 .inner_filter{
   padding: 5%;
+  width: 100%;
+  /* border: 2px solid green; */
 }
 .filter-icon,.filterOpen{
     width: 20px;

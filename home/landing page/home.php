@@ -13,16 +13,6 @@ ob_start();
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/12543e6ff4.js" crossorigin="anonymous"></script>
     <style>
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
         .search_on {
             background-color: rgb(255, 34, 0);
             box-shadow: 1px 1px 10px 5px rgba(242, 30, 30, 0.569);
@@ -185,13 +175,13 @@ ob_start();
                                     <!-- room images not stored due to large storages need  -->
                                         <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
                                     </div>
-                                    <div class="details p-1">
+                                    <div class="details p-2">
                                         <div class="flex justify-between font-semibold ">
                                             <p class="text-black ">${element.property_name} in <span class="">${element.locations}</span></p>
                                             <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5-(312)</p>
                                         </div>
-                                        <p>${element.Description}</p>
-                                        <p>${formatDateRange(element.available_from, element.available_to)}</p>
+                                        <p class=" ">${element.Description}</p>
+                                        <p  class="text-xs tracking-widest font-semibold">${formatDateRange(element.available_from, element.available_to)}</p>
                                         <p ><span class="text-black font-semibold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i>${element.price}</span> night</p>
                                     </div>
                                 </div>`;

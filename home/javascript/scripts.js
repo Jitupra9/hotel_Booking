@@ -343,13 +343,10 @@ $(document).ready(function () {
   updateDates();
 
   $(".travel_fillup").on("click", function () {
-    $(".header").slideUp();
-
     $(".travel_info").slideDown();
   });
   $(".offtravel_info").on("click", function () {
     $(".travel_info").slideUp();
-    $(".header").slideDown();
   });
 
   $(".date_div").children().addClass("hidden");

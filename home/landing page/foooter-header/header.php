@@ -29,25 +29,25 @@
     session_start();
     ?>
     <div class="account-slide-bar hidden">
-        <p><a href="">Messages</a></p>
-        <p class="airbnb-your-home cursor-pointer"><i class="fa-solid fa-globe"></i> Easy-Stay Abouts</p>
-        <p><a href="">Notifications</a></p>
-        <p><a href="">Trips</a></p>
-        <p><a href="">Whichlist</a></p>
+        <p><a href=""><i class="fa-regular fa-comment-dots"></i> Messages</a></p>
+        <p class="airbnb-your-home cursor-pointer"><i class="fa-solid fa-earth-asia"></i> Easy-Stay Abouts</p>
+        <p><a href=""><i class="fa-regular fa-bell"></i> Notifications</a></p>
+        <p><a href=""><i class="fa-solid fa-person-hiking"></i> Travel</a></p>
+        <p><a href=""><i class="fa-regular fa-heart"></i> Whichlist</a></p>
         <hr class="border border-gray-500 my-2">
         <?php if (isset($_SESSION['user'])):
             ?>
             <div class=""><a href="home/profile/profile.php">
-                    <p>Account</p>
+                    <p><i class="fa-regular fa-circle-user"></i> Account</p>
                 </a></div>
         <?php else: ?>
             <div><a href="home/Login-Logout-signup/Login/autologin.php">
-                    <p>Login</p>
+                    <p><i class="fa-regular fa-user"></i> Login</p>
                 </a></div>
         <?php endif; ?>
         <hr class="border border-gray-500 my-2">
-        <p><a href="">Help Center</a></p>
-        <p><a href="home/Login-Logout-signup/logout.php">Logut</a></p>
+        <p><a href=""><i class="fa-solid fa-info"></i> Help Center</a></p>
+        <p><a href="home/Login-Logout-signup/logout.php"><i class="fa-regular fa-circle-xmark"></i> Logut</a></p>
     </div>
 
 
