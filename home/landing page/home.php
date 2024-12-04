@@ -150,7 +150,6 @@ ob_start();
                     <script>
                         $(document).ready(function () {
                             let searchData = {};
-
                             const renderRooms = (rooms) => {
                                 $(".allrooms").empty();
                                 rooms.forEach(element => {
@@ -167,7 +166,9 @@ ob_start();
                                     }
                                     const room = `
                                 <div class="property_details ${element.place_type} w-full sm:w-80 border border-gray-400 rounded-2xl  pb-5 overflow-hidden m-2">
-                                    <div class="images relative">
+                                    <div class="images relative  cursor-pointer">
+                                        <div class="imageoverflows absolute flex justify-center items-center w-full h-full bg-black opacity-50">
+                                        <a href="home/room_details/room_details.php?${element.Property_id}" class=" text-white">Click to Details</a></div>
                                         <div class="absolute top-3 w-full flex justify-between px-2">
                                             <p class="bg-white rounded-full px-2">Guest Favorite</p>
                                             <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
@@ -180,12 +181,23 @@ ob_start();
                                             <p class="text-black ">${element.property_name} in <span class="">${element.locations}</span></p>
                                             <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5-(312)</p>
                                         </div>
+                                        <p>${element.Property_type}</p>
+                        
                                         <p class=" ">${element.Description}</p>
                                         <p  class="text-xs tracking-widest font-semibold">${formatDateRange(element.available_from, element.available_to)}</p>
                                         <p ><span class="text-black font-semibold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i>${element.price}</span> night</p>
                                     </div>
                                 </div>`;
                                     $(".allrooms").append(room);
+                                    $(".imageoverflows").hide();
+                                    $(".images").hover(
+                                        function () {
+                                            $(this).find(".imageoverflows").show();
+                                        },
+                                        function () {
+                                            $(this).find(".imageoverflows").hide();
+                                        }
+                                    );
                                 });
                             };
 
