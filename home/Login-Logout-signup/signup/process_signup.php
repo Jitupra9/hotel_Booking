@@ -8,8 +8,7 @@ $fullName = $_POST['fullname'];
 $contactNo = $_POST['contact'];
 $address = $_POST['address'];
 $Dob = $_POST['dob'];
-$conn = mysqli_connect("localhost", "root", "", "hotel-management");
-
+include_once 'config/coon.php';
 
 $sql = "INSERT INTO `user` (`user_id`, `email`, `password`, `full_name`, `contact`, `address`, `dob`) VALUES (NULL, '{$email}', '{$password}', '{$fullName}', '{$contactNo}', '{$address}', '{$Dob}');";
 $result = mysqli_query($conn, $sql);

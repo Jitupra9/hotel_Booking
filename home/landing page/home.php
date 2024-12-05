@@ -152,53 +152,58 @@ ob_start();
                             let searchData = {};
                             const renderRooms = (rooms) => {
                                 $(".allrooms").empty();
-                                rooms.forEach(element => {
-                                    function formatDateRange(availableFrom, availableTo) {
-                                        const monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+                                if (rooms.length != 0) {
+                                    rooms.forEach(element => {
+                                        function formatDateRange(availableFrom, availableTo) {
+                                            const monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
 
-                                        const fromDate = new Date(availableFrom);
-                                        const toDate = new Date(availableTo);
+                                            const fromDate = new Date(availableFrom);
+                                            const toDate = new Date(availableTo);
 
-                                        const formattedFrom = `${fromDate.getDate()}-${monthNames[ fromDate.getMonth() ]}`;
-                                        const formattedTo = `${toDate.getDate()}-${monthNames[ toDate.getMonth() ]}`;
+                                            const formattedFrom = `${fromDate.getDate()}-${monthNames[ fromDate.getMonth() ]}`;
+                                            const formattedTo = `${toDate.getDate()}-${monthNames[ toDate.getMonth() ]}`;
 
-                                        return `${formattedFrom} to ${formattedTo}`;
-                                    }
-                                    const room = `
-                                <div class="property_details ${element.place_type} w-full sm:w-80 border border-gray-400 rounded-2xl  pb-5 overflow-hidden m-2">
-                                    <div class="images relative  cursor-pointer">
-                                        <div class="imageoverflows absolute flex justify-center items-center w-full h-full bg-black opacity-50">
-                                        <a href="home/room_details/room_details.php?${element.Property_id}" class=" text-white">Click to Details</a></div>
-                                        <div class="absolute top-3 w-full flex justify-between px-2">
-                                            <p class="bg-white rounded-full px-2">Guest Favorite</p>
-                                            <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
-                                        </div>
-                                    <!-- room images not stored due to large storages need  -->
-                                        <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
-                                    </div>
-                                    <div class="details p-2">
-                                        <div class="flex justify-between font-semibold ">
-                                            <p class="text-black ">${element.property_name} in <span class="">${element.locations}</span></p>
-                                            <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5-(312)</p>
-                                        </div>
-                                        <p>${element.Property_type}</p>
-                        
-                                        <p class=" ">${element.Description}</p>
-                                        <p  class="text-xs tracking-widest font-semibold">${formatDateRange(element.available_from, element.available_to)}</p>
-                                        <p ><span class="text-black font-semibold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i>${element.price}</span> night</p>
-                                    </div>
-                                </div>`;
-                                    $(".allrooms").append(room);
-                                    $(".imageoverflows").hide();
-                                    $(".images").hover(
-                                        function () {
-                                            $(this).find(".imageoverflows").show();
-                                        },
-                                        function () {
-                                            $(this).find(".imageoverflows").hide();
+                                            return `${formattedFrom} to ${formattedTo}`;
                                         }
-                                    );
-                                });
+                                        const room = `
+                                            <div class="property_details ${element.place_type} w-full sm:w-80 border border-gray-400 rounded-2xl  pb-5 overflow-hidden m-2">
+                                                <div class="images relative  cursor-pointer">
+                                                    <div class="imageoverflows absolute flex justify-center items-center w-full h-full bg-black opacity-50">
+                                                    <a href="home/room_details/room_details.php?property=${element.Property_id}" class=" text-white">Click to Details</a></div>
+                                                    <div class="absolute top-3 w-full flex justify-between px-2">
+                                                        <p class="bg-white rounded-full px-2">Guest Favorite</p>
+                                                        <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
+                                                    </div>
+                                                <!-- room images not stored due to large storages need  -->
+                                                    <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
+                                                </div>
+                                                <div class="details p-2">
+                                                    <div class="flex justify-between font-semibold ">
+                                                        <p class="text-black ">${element.property_name} in <span class="">${element.locations}</span></p>
+                                                        <p class="text-sm"><i class="fa-solid fa-star text-xs"></i> 5-(312)</p>
+                                                    </div>
+                                                    <p class=" ">${element.Description}</p>
+                                                    <p  class="text-xs tracking-widest font-semibold">${formatDateRange(element.available_from, element.available_to)}</p>
+                                                    <p ><span class="text-black font-semibold"><i class="fa-solid fa-indian-rupee-sign text-xs"></i>${element.price}</span> night</p>
+                                                </div>
+                                            </div>`;
+                                        $(".allrooms").append(room);
+                                        $(".imageoverflows").hide();
+                                        $(".images").hover(
+                                            function () {
+                                                $(this).find(".imageoverflows").show();
+                                            },
+                                            function () {
+                                                $(this).find(".imageoverflows").hide();
+                                            }
+                                        );
+                                    });
+                                } else {
+                                    console.log("it's empty")
+                                    let nothing = '<h1> No data is avilabl</h1>';
+                                    $(".allrooms").append(nothing);
+                                }
+                                
                             };
 
                             const fetchRooms = (searchData = {}) => {
