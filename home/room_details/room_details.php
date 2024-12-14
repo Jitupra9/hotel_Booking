@@ -98,8 +98,11 @@
                         <div class=" bg-gray-400 flex justify-center items-center w-10 h-10 rounded-full"><i
                                 class="fa-solid fa-user"></i></div>
                         <div>
-                            <h3 class=" font-bold ">Hosted by Sourav</h3>
-                            <p>Superhost . 16 months hosting</p>
+                            <h3 class=" font-bold ">Hosted by <?php echo  $row['Hostid']?></h3>
+                            <p>Superhost .
+                                 <?php
+                            echo isset($row['Hosting_date'])  ? date('y-m-d') - $row['Hosting_date']: 00 ?> 
+                            months hosting</p>
                         </div>
                     </div>
                     <div class=" border-b-2 whitespace-nowrap">
