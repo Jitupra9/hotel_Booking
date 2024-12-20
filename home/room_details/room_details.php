@@ -17,7 +17,8 @@
 <body>
     <script src="scrpt.js?v=<?= $version ?>"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVTBjdaWk84VPZ-v9C4TKk41Wd-GK1nlo"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpBvHKh_kjcu357JjejICS9hw-qENKK-s&libraries=places"></script>
     <?php
     try {
         if (isset($_GET['property'])) {
@@ -28,7 +29,7 @@
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) != 0) {
                 $row = mysqli_fetch_assoc($result);
-                print_r($row);
+                // print_r($row);
             }
         }
     } catch (Exception $error) {
@@ -44,8 +45,8 @@
             <div class="flex justify-between">
                 <h1 class="text-3xl font-semibold"><?php echo $row['Title'] ?></h1>
                 <div class=" flex items-center gap-3">
-                    <p><i class="fa-regular fa-share-from-square"></i> Share</p>
-                    <p><i class="fa-regular fa-heart"></i> Save</p>
+                    <p><u><i class="fa-regular fa-share-from-square"></i> Share</u></p>
+                    <p><u><i class="fa-regular fa-heart"></i> Save</u></p>
                 </div>
             </div>
         </div>
@@ -77,112 +78,140 @@
             </div>
             <div class="hidden absolute bottom-5 sm:flex justify-between px-5 w-full">
                 <button id="back-button" class=" bg-white font-semibold rounded-lg border border-gray-600 px-3 py-1 ">
-                    <a href="" class="button">Show all photos</a>
+                    <a href="" class="button"><i class="fa-solid fa-list-ul"></i> Show all photos</a>
                 </button>
             </div>
         </div>
 
 
-        <div class="px-5">
-            <div class="propertydetalis flex overflow-hidden " alt="something wrong">
-                <div class=" ">
+        <div class="propertydetalis_parent">
+            <div class="propertydetalis relative flex justify-between" alt="something wrong">
+                <div class=" booking_detilas_div">
                     <h1 class=" sm:hidden text-2xl my-2 font-semibold">Property Title</h1>
                     <p class="font-semibold my-1 sm:text-2xl whitespace-nowrap">
-                        <?php echo $row['property_name'] . "," . $row['locations'] ?>
+                        <?php echo $row['property_name'] . " in " . $row['locations'] . ", India" ?>
                     </p>
-                    <p class="whitespace-nowrap"><?php echo $row['MaxAdult']+$row['MaxChild']." " ." guests" . " . ". $row['HasBadroom']." " ."bedrooms " . " . ". $row['HasBeds']." " ."beds" . " . ". $row['HasBathroom']." " ."bathrooms"?></p>
-                    <p class="my-1 whitespace-nowrap font-bold"><i class="fa-solid fa-star"></i> 4.75 - <u>24
-                            reviews</u></p>
-                    <div
-                        class="whitespace-nowrap cursor-pointer border-t-2 border-b-2 mt-5 flex items-center gap-5 py-5">
-                        <div class=" bg-gray-400 flex justify-center items-center w-10 h-10 rounded-full"><i
-                                class="fa-solid fa-user"></i></div>
-                        <div>
-                            <h3 class=" font-bold ">Hosted by <?php echo  $row['Hostid']?></h3>
-                            <p>Superhost .
-                                 <?php
-                            echo isset($row['Hosting_date'])  ? date('y-m-d') - $row['Hosting_date']: 00 ?> 
-                            months hosting</p>
+                    <p class="whitespace-nowrap">
+                        <?php echo $row['MaxAdult'] + $row['MaxChild'] . " " . " guests" . " . " . $row['HasBadroom'] . " " . "bedrooms " . " . " . $row['HasBeds'] . " " . "beds" . " . " . $row['HasBathroom'] . " " . "bathrooms" ?>
+                    </p>
+                    <div class="py-3 mt-5 border border-gray-200 rounded-xl font-semibold">
+                        <div class="flex items-center justify-around">
+                            <div class=" analys_box  border-r flex justify-center items-center ">
+                                <h3>Guests <br> favourite</h3>
+                                <p class="guset_favourite">One of the most loved homes on <br> easy stay,according
+                                    guests</p>
+                            </div>
+                            <div class=" analys_box  border-r">
+                                <p class=" text-center text-2xl">4.89</p>
+                                <?php for ($i = 0; $i <= 5; $i++) {
+                                    echo '<i class="fa-solid fa-star text-xs"></i>';
+                                } ?>
+                            </div>
+                            <divc class=" analys_box  ">
+                                <p class="text-2xl">44</p>
+                                <p><u>Reviews</u></p>
+                            </divc>
                         </div>
                     </div>
-                    <div class=" border-b-2 whitespace-nowrap">
-                        <div class=" flex items-center py-5">
-                            <div class=" w-10 h-10 rounded-full"><i class="fa-solid fa-door-open"></i></div>
+                    <div class="whitespace-nowrap cursor-pointer  border-b mt-5 flex items-center gap-5 py-5">
+                        <div class=" bg-gray-200 flex justify-center items-center w-10 h-10 rounded-full"><i
+                                class="fa-solid fa-user"></i></div>
+                        <div>
+                            <h3 class=" font-bold ">Hosted by <?php echo $row['Hostid'] ?></h3>
+                            <p class=" host-p-profile">Superhost -
+                                <?php
+                                $now = time();
+                                $date = $row['Hosting_date'];
+                                $diff = $now - strtotime($date);
+                                $day = $diff / (24 * 60 * 60);
+                                echo isset($row['Hosting_date']) ? round($day / 30) : 00
+                                    ?>
+                                months hosting
+                            </p>
+                        </div>
+                    </div>
+                    <div class="property-feature-parent border-b-2 whitespace-nowrap">
+                        <div class=" property-feature ">
+                            <div class=" w-12  rounded-full"><i class="fa-solid fa-key"></i></div>
                             <div>
-                                <h3 class=" font-semibold">Self check-in</h3>
-                                <p>Check yourself in with the lockbox.</p>
+                                <h3 class=" font-semibold">Great check-in experience</h3>
+                                <p>Recent guests loved the smooth start to this stay.</p>
                             </div>
                         </div>
-                        <div class=" flex items-center py-5">
-                            <div class=" w-10 h-10 rounded-full"><i class="fa-solid fa-paw"></i></div>
+                        <div class="property-feature">
+                            <div class="w-12  rounded-full"><i class="fa-solid fa-street-view"></i></div>
                             <div>
-                                <h3 class=" font-semibold">Furry friends welcome</h3>
-                                <p>Bring your pets along for the stay.</p>
+                                <h3 class=" font-semibold">Peace and quiet</h3>
+                                <p>Guests say this home is in a quiet area.</p>
                             </div>
                         </div>
-                        <div class=" flex items-center py-5">
-                            <div class=" w-10 h-10 rounded-full"><i class="fa-regular fa-calendar"></i></div>
+                        <div class="property-feature">
+                            <div class=" w-12 rounded-full"><i class="fa-regular fa-calendar"></i></div>
                             <div>
-                                <h3 class=" font-semibold">Free cancellation before 26 Dec</h3>
+                                <h3 class=" font-semibold">Free cancellation</h3>
                                 <p>Get a full refund if you change your mind.</p>
                             </div>
                         </div>
                     </div>
                     <div class=" py-5 border-b-2">
+                        <h1 class=" text-2xl font-semibold">About this place </h1> <br>
                         <p><?php echo $row['Description'] ?></p>
                         <a href="" class=" font-semibold my-7"><u>Show more</u></a>
                     </div>
                 </div>
-                <div class="payment_form hidden sm:block border-2 shadow-lg px-5 py-5 rounded-xl lg:px-10">
-                    <h1><span class=" font-bold text-2xl">₹2,200</span><span> night</span></h1>
-                    <div class="border border-gray-600 rounded-lg text-xs my-5">
-                        <div class="flex border-b border-gray-600">
-                            <div class=" border-r border-gray-600 p-2 pr-10 lg:pr-24">
-                                <p class="font-semibold">CHECKIN</p>
-                                <p class="my-1">5/18/2024</p>
+                <div class="payment_div ">
+                    <div class="payment_form  mb-5  border-2 shadow-lg p-5 rounded-xl lg:px-10">
+                        <h1><span class=" font-bold text-2xl">₹2,200</span><span> night</span></h1>
+                        <div class="border border-gray-600 rounded-lg text-xs my-5">
+                            <div class="flex border-b border-gray-600">
+                                <div class=" border-r border-gray-600 p-2 pr-10 lg:pr-24">
+                                    <p class="font-semibold">CHECKIN</p>
+                                    <p class="my-1">5/18/2024</p>
+                                </div>
+                                <div class="p-2 pr-10 lg:pr-24">
+                                    <p class="font-semibold ">CHECKOUT</p>
+                                    <p class="my-1">5/18/2024</p>
+                                </div>
                             </div>
-                            <div class="p-2 pr-10 lg:pr-24">
-                                <p class="font-semibold ">CHECKOUT</p>
-                                <p class="my-1">5/18/2024</p>
+                            <div class="flex p-2 justify-between">
+                                <div>
+                                    <p class="font-semibold">GUESTS</p>
+                                    <p class="my-1">3 guests</p>
+                                </div>
+                                <i class=" cursor-pointer fa-solid fa-angle-left transform -rotate-90"></i>
                             </div>
                         </div>
-                        <div class="flex p-2 justify-between">
-                            <div>
-                                <p class="font-semibold">GUESTS</p>
-                                <p class="my-1">3 guests</p>
+                        <a class="cursor-pointer text-white w-full block  bg-pink-600 rounded-lg px-7 py-2 font-semibold text-center"
+                            href="">Reserve</a>
+                        <p class=" my-2">You won't be charged yet</p>
+                        <div class=" py-2 border-b-2 ">
+                            <div class=" flex my-2 items-center justify-between ">
+                                <p><u>₹2,200 * 5 nights</u></p>
+                                <p>₹11,000</p>
                             </div>
-                            <i class=" cursor-pointer fa-solid fa-angle-left transform -rotate-90"></i>
+                            <div class=" flex my-2 items-center justify-between">
+                                <p><u>Airbnb service fee</u></p>
+                                <p>₹1332</p>
+                            </div>
+                        </div>
+                        <div class=" flex my-2 py-3 items-center justify-between font-bold">
+                            <p>Total(INR) before taxes</p>
+                            <p>₹13,999.06</p>
                         </div>
                     </div>
-                    <a class="cursor-pointer text-white w-full block  bg-pink-600 rounded-lg px-7 py-2 font-semibold text-center"
-                        href="">Reserve</a>
-                    <p class=" my-2">You won't be charged yet</p>
-                    <div class=" py-2 border-b-2 ">
-                        <div class=" flex my-2 items-center justify-between ">
-                            <p>₹2,200 * 5 nights</p>
-                            <p>₹11,000</p>
+                    <div
+                        class="payment_litle flex items-start border-2 border-gray-200 shadow-2xl p-3 rounded-xl bg-white">
+                        <i class="fa-brands fa-usps text-pink-600 "></i>
+                        <div class="">
+                            <h1 class="font-semibold mb-1 "> Good Price</h1>
+                            <p class=" text-gray-500">Your dates are ₹355 less than the avg. nightly rate over the last
+                                3 months.</p>
                         </div>
-                        <div class=" flex my-2 items-center justify-between">
-                            <p>Cleaning fee</p>
-                            <p>₹100</p>
-                        </div>
-                        <div class=" flex my-2 items-center justify-between">
-                            <p>Service fee</p>
-                            <p>₹1567.06</p>
-                        </div>
-                        <div class=" flex my-2 items-center justify-between">
-                            <p>Taxes</p>
-                            <p>₹1332</p>
-                        </div>
-                    </div>
-                    <div class=" flex my-2 py-3 items-center justify-between font-bold">
-                        <p>Total(INR)</p>
-                        <p>₹13,999.06</p>
                     </div>
                 </div>
             </div>
             <div class=" border-b-2 flex flex-col gap-y-3 py-5">
-                <h2 class=" text-2xl font-bold my-4">What this place offers</h2>
+                <h2 class=" text-2xl font-semibold my-4">What this place offers</h2>
                 <div class=" lg:flex gap-10 tracking-widest">
                     <div>
                         <div class=" flex gap-5 my-2"><i class="fa-solid fa-city"></i>
@@ -216,13 +245,13 @@
                             <p>Carbon monoxide alarm</p>
                         </div>
                     </div>
-                    <div class=" text-center font-semibold my-2">
-                        <p class="cursor-pointer">Show all amenities</p>
+                    <div class=" text-center font-semibold my-2 ">
+                        <p class="cursor-pointer border rounded-lg p-2">Show all amenities</p>
                     </div>
                 </div>
             </div>
             <div class=" border-b-2">
-                <h1 class=" my-4 font-bold text-2xl">Where you'll be</h1>
+                <h1 class=" my-4 font-bold text-xl ">Where you'll be</h1>
                 <p>Bhubaneswar,Odisha,india</p>
                 <div class="maps my-5 h-60 w-full opacity-75 rounded-xl "></div>
             </div>
