@@ -18,7 +18,7 @@
     <script src="scrpt.js?v=<?= $version ?>"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpBvHKh_kjcu357JjejICS9hw-qENKK-s&libraries=places"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=IzaSyBpBvHKh_kjcu357JjejICS9hw-qENKK-s&libraries=places"></script>
     <?php
     try {
         if (isset($_GET['property'])) {
