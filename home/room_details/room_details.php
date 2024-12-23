@@ -1,4 +1,6 @@
-<?php include_once '../../config/config.php' ?>
+<?php include_once '../../config/config.php';
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,10 +46,72 @@
         <div class=" hidden sm:block  ">
             <div class="flex justify-between">
                 <h1 class="text-3xl font-semibold"><?php echo $row['Title'] ?></h1>
-                <div class=" flex items-center gap-3">
-                    <p><u><i class="fa-regular fa-share-from-square"></i> Share</u></p>
-                    <p><u><i class="fa-regular fa-heart"></i> Save</u></p>
+                <div class=" flex items-center gap-3 relative">
+                    <button class=" shareButton cursor-pointer"><u><i
+                                class="fa-regular fa-share-from-square"></i>Share</u></button>
+                    <button class="saveItem"><u><i class=" fa-regular fa-heart saved_porp"></i> Save</u></button>
+                    <div
+                        class=" share_sucess bg-white  shadow-lg border shadow-gray-600 rounded-xl py-1 px-3 absolute top-6 whitespace-nowrap hidden">
+                        <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i> Link copyed
+                    </div>
+                    <div
+                        class=" save_sucess bg-white  shadow-lg border shadow-gray-600 rounded-xl py-1 px-3 absolute top-6 whitespace-nowrap hidden ">
+                        <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i> Item is saved
+                    </div>
+                    <!-- <div><a href="../../backend/save.php">click it</a></div> -->
                 </div>
+                <script>
+                    $(".shareButton").click(function (e) {
+                        navigator.clipboard.writeText(window.location.href).then(() => {
+                            $(".share_sucess").fadeIn();
+                            setTimeout(() => {
+                                $(".share_sucess").fadeOut();
+                            }, 1000);
+                        }).catch(error => {
+                            console.log("filed to copy url");
+                        })
+                    });
+
+                </script>
+                <script>
+                    $(".saveItem").click(function (e) {
+                        const date = new Date();
+                        const property_details = {
+                            user_id: "<?php echo $_SESSION['user']['user_id'] ?>",
+                            property_id: "<?php echo $_GET['property'] ?>",
+                            date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+                        }
+                        $.ajax({
+                            url: "../../backend/save.php",
+                            type: "POST",
+                            data: {
+                                user_id: property_details.user_id,
+                                property_id: property_details.property_id,
+                                date: property_details.date
+                            },
+                            dataType: "JSON",
+                            success: function (response) {
+                                if (response) {
+                                    alert("it's worked");
+                                    $(".saved_porp").addClass("fa-regular");
+                                    $(".saved_porp").addClass("fa-solid");
+                                    $(".saved_porp").css({
+                                        color:'red'
+                                    });
+                                    $(".save_sucess").fadeIn();
+                                    setTimeout(() => {
+                                        $(".save_sucess").fadeOut();
+                                    }, 1000);
+                                } else {
+                                    alert("it's not worked");
+                                }
+                            },
+                            error: function (error) {
+                                console.error("AJAX Error:", error);
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
         <div class="image-container relative sm:my-5 w-full h-64 flex sm:h-80 lg:h-96 gap-2">
@@ -246,7 +310,7 @@
                         </div>
                     </div>
                     <div class=" text-center font-semibold my-2 ">
-                        <p class="cursor-pointer border rounded-lg p-2">Show all amenities</p>
+                        <p class="cursor-pointer border-2 rounded-lg p-2">Show all amenities</p>
                     </div>
                 </div>
             </div>
