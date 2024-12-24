@@ -17,10 +17,10 @@ session_start();
 </head>
 
 <body>
-    <script src="scrpt.js?v=<?= $version ?>"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../home/javascript/room_details.js?v=<?= $version ?>"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=IzaSyBpBvHKh_kjcu357JjejICS9hw-qENKK-s&libraries=places"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpBvHKh_kjcu357JjejICS9hw-qENKK-s&libraries=places"></script>
     <?php
     try {
         if (isset($_GET['property'])) {
@@ -48,8 +48,14 @@ session_start();
                 <h1 class="text-3xl font-semibold"><?php echo $row['Title'] ?></h1>
                 <div class=" flex items-center gap-3 relative">
                     <button class=" shareButton cursor-pointer"><u><i
-                                class="fa-regular fa-share-from-square"></i>Share</u></button>
-                    <button class="saveItem"><u><i class=" fa-regular fa-heart saved_porp"></i> Save</u></button>
+                                class="fa-regular fa-share-from-square"></i> Share</u></button>
+                                <?php
+                                $user_id = $_SESSION['user']['user_id'];
+                                $property_id = $_GET['property'];
+                                $query = "select * from whichlist where property_id = $property_id and user_id = $property_id";
+                                
+                                ?>
+                    <button class="saveItem"><u><i class="saved_porp fa-regular fa-bookmark"></i> Save</u></button>
                     <div
                         class=" share_sucess bg-white  shadow-lg border shadow-gray-600 rounded-xl py-1 px-3 absolute top-6 whitespace-nowrap hidden">
                         <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i> Link copyed
@@ -61,57 +67,69 @@ session_start();
                     <!-- <div><a href="../../backend/save.php">click it</a></div> -->
                 </div>
                 <script>
-                    $(".shareButton").click(function (e) {
-                        navigator.clipboard.writeText(window.location.href).then(() => {
-                            $(".share_sucess").fadeIn();
-                            setTimeout(() => {
-                                $(".share_sucess").fadeOut();
-                            }, 1000);
-                        }).catch(error => {
-                            console.log("filed to copy url");
-                        })
-                    });
 
                 </script>
                 <script>
                     $(".saveItem").click(function (e) {
-                        const date = new Date();
-                        const property_details = {
-                            user_id: "<?php echo $_SESSION['user']['user_id'] ?>",
-                            property_id: "<?php echo $_GET['property'] ?>",
-                            date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-                        }
-                        $.ajax({
-                            url: "../../backend/save.php",
-                            type: "POST",
-                            data: {
-                                user_id: property_details.user_id,
-                                property_id: property_details.property_id,
-                                date: property_details.date
-                            },
-                            dataType: "JSON",
-                            success: function (response) {
-                                if (response) {
-                                    alert("it's worked");
-                                    $(".saved_porp").addClass("fa-regular");
-                                    $(".saved_porp").addClass("fa-solid");
-                                    $(".saved_porp").css({
-                                        color:'red'
-                                    });
-                                    $(".save_sucess").fadeIn();
-                                    setTimeout(() => {
-                                        $(".save_sucess").fadeOut();
-                                    }, 1000);
-                                } else {
-                                    alert("it's not worked");
-                                }
-                            },
-                            error: function (error) {
-                                console.error("AJAX Error:", error);
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                            ?>
+                            const date = new Date();
+                            const property_details = {
+                                user_id: "<?php echo $_SESSION['user']['user_id'] ?>",
+                                property_id: "<?php echo $_GET['property'] ?>",
+                                date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
                             }
-                        });
+                            $.ajax({
+                                url: "../../backend/save.php",
+                                type: "POST",
+                                data: {
+                                    user_id: property_details.user_id,
+                                    property_id: property_details.property_id,
+                                    date: property_details.date
+                                },
+                                dataType: "JSON",
+                                success: function (response) {
+                                    if (response) {
+                                        $(".saved_porp").removeClass("fa-regular");
+                                        $(".saved_porp").addClass("fa-solid");
+                                        $(".saved_porp").css({
+                                            color: 'red'
+                                        });
+                                        $(".save_sucess").fadeIn();
+                                        setTimeout(() => {
+                                            $(".save_sucess").fadeOut();
+                                        }, 1000);
+                                    } else {
+                                        alert("it's not worked");
+                                    }
+                                },
+                                error: function (error) {
+                                    console.error("AJAX Error:", error);
+                                }
+                            });
+                            <?php
+                        } else {
+                            ?>
+                            $(".login_popup").fadeIn();
+
+                            <?php
+                        }
+
+                        ?>
                     });
+
                 </script>
+            </div>
+        </div>
+        <div class="login_popup hidden ">
+            <i class="fa-regular fa-circle-user text-3xl text-red-600 mb-3"></i>
+            <h1 class=" font-semibold text-xl mb-5">please login</h1>
+            <p class="mb-3">Before performe any action please <br> login your account</p>
+            <div class="">
+                <button class="cancel_login_popup bg-gray-400 rounded-lg px-3 py-1">cancel</button>
+                <button class="bg-red-600 text-white rounded-lg px-3 py-1"><a
+                        href="../../home/Login-Logout-signup/Login/login.php">OK</a></button>
             </div>
         </div>
         <div class="image-container relative sm:my-5 w-full h-64 flex sm:h-80 lg:h-96 gap-2">
@@ -326,9 +344,7 @@ session_start();
 
                     if (!map) {
 
-                        var location = { lat: 20.2961, lng: 85.8245 };
-
-
+                        var location = { lat: 19.26330565998834, lng: 84.55881488959878 };
                         map = new google.maps.Map($('.maps')[ 0 ], {
                             zoom: 12,
                             center: location,

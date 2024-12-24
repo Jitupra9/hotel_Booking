@@ -9,9 +9,5 @@ $(document).ready(() => {
       $("body").css({ background: "white", color: "black" });
       $(".header").css({ background: "white", color: "black" });
     }
-  });
-
-
-
-    
+  });   
 });
