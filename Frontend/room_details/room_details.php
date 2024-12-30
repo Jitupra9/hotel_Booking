@@ -18,7 +18,7 @@ session_start();
 
 <body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../home/javascript/room_details.js?v=<?= $version ?>"></script>
+    <script src="../../frontend/javascript/room_details.js?v=<?= $version ?>"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpBvHKh_kjcu357JjejICS9hw-qENKK-s&libraries=places"></script>
     <?php
@@ -29,23 +29,58 @@ session_start();
             $sql = "select p.*,s.* from property p join
                         property_specification s on p.Property_id = s.property_id  where p.property_id= '$property_id' ";
             $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) != 0) {
+            $activeSpecifications = [];
+            $warnings = [];
+
+            if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
-                // print_r($row);
+                $specifications = [
+                    'HasKitchen' => ['label' => 'Kitchen', 'icon' => 'fa-kitchen-set'],
+                    'HasAC' => ['label' => 'Air Conditioning', 'icon' => 'fa-snowflake'],
+                    'HasWiFi' => ['label' => 'WiFi', 'icon' => 'fa-wifi'],
+                    'HasParking' => ['label' => 'Parking', 'icon' => 'fa-car'],
+                    'HasDryer' => ['label' => 'Dryer', 'icon' => 'fa-dryer'],
+                    'AllowsPets' => ['label' => 'Pets Allowed', 'icon' => 'fa-paw'],
+                    'HasPool' => ['label' => 'Pool', 'icon' => 'fa-swimming-pool'],
+                    'HasGym' => ['label' => 'Gym', 'icon' => 'fa-dumbbell'],
+                    'HasBalcony' => ['label' => 'Balcony', 'icon' => 'fa-building'],
+                    'HasGarden' => ['label' => 'Garden', 'icon' => 'fa-tree'],
+                    'HasFireplace' => ['label' => 'Fireplace', 'icon' => 'fa-fire'],
+                    'HasHotTub' => ['label' => 'Hot Tub', 'icon' => 'fa-hot-tub'],
+                    'HasBBQ' => ['label' => 'BBQ', 'icon' => 'fa-utensils'],
+                    'IsSmokeFree' => ['label' => 'Smoke-Free', 'icon' => 'fa-ban-smoking'],
+                    'HasElevator' => ['label' => 'Elevator', 'icon' => 'fa-elevator'],
+                    'AllowsSmoking' => ['label' => 'Smoking Allowed', 'icon' => 'fa-smoking'],
+                ];
+                foreach ($specifications as $column => $details) {
+                    if (!empty($row[$column]) && $row[$column] > 0) {
+                        if ($column === 'IsSmokeFree' && $row[$column] == 1) {
+                            $warnings[] = "Smoking is restricted because this property is smoke-free.";
+                            unset($specifications['AllowsSmoking']);
+                        } elseif ($column === 'AllowsSmoking' && $row[$column] == 1) {
+                            $warnings[] = "This property allows smoking. It may not be suitable for non-smokers.";
+                            unset($specifications['IsSmokeFree']);
+                        }
+                        if (isset($specifications[$column])) {
+                            $activeSpecifications[] = $details;
+                        }
+                    }
+                }
+            } else {
+                $warnings[] = "No specifications available for this property.";
             }
         }
     } catch (Exception $error) {
-        echo "somthing is wrong or may be server not respond . $error";
+        echo "somthing is wrong or may be server not respond ";
     } finally {
-
     }
-
-
     ?>
     <div class="property_main_container">
         <div class=" hidden sm:block  ">
             <div class="flex justify-between">
-                <h1 class="text-3xl font-semibold"><?php echo $row['Title'] ?></h1>
+                <h1 class="text-3xl font-semibold">
+                    <?php echo isset($row['Title']) ? $row['Title'] : "Propperty Title" ?>
+                </h1>
                 <div class=" flex items-center gap-3 relative">
                     <button class=" shareButton cursor-pointer"><u><i class="fa-regular fa-share-from-square"></i>
                             Share</u></button>
@@ -60,7 +95,7 @@ session_start();
                             <button class="saveItem"><u><i class="saved_porp fa-solid fa-bookmark text-red-600"></i>
                                     Save</u></button>
                             <?php
-                        }else{
+                        } else {
                             ?>
                             <button class="saveItem"><u><i class="saved_porp fa-regular fa-bookmark"></i>
                                     Save</u></button>
@@ -81,11 +116,7 @@ session_start();
                         class=" save_sucess bg-white  shadow-lg border shadow-gray-600 rounded-xl py-1 px-3 absolute top-6 whitespace-nowrap hidden ">
                         <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i> Item is saved
                     </div>
-                    <!-- <div><a href="../../backend/save.php">click it</a></div> -->
                 </div>
-                <script>
-
-                </script>
                 <script>
                     $(".saveItem").click(function (e) {
                         <?php
@@ -129,13 +160,10 @@ session_start();
                         } else {
                             ?>
                             $(".login_popup").fadeIn();
-
                             <?php
                         }
-
                         ?>
                     });
-
                 </script>
             </div>
         </div>
@@ -146,7 +174,7 @@ session_start();
             <div class="">
                 <button class="cancel_login_popup bg-gray-400 rounded-lg px-3 py-1">cancel</button>
                 <button class="bg-red-600 text-white rounded-lg px-3 py-1"><a
-                        href="../../home/Login-Logout-signup/Login/login.php">OK</a></button>
+                        href="../../frontend/Login-Logout-signup/Login/login.php">OK</a></button>
             </div>
         </div>
         <div class="image-container relative sm:my-5 w-full h-64 flex sm:h-80 lg:h-96 gap-2">
@@ -188,10 +216,13 @@ session_start();
                 <div class=" booking_detilas_div">
                     <h1 class=" sm:hidden text-2xl my-2 font-semibold">Property Title</h1>
                     <p class="font-semibold my-1 sm:text-2xl whitespace-nowrap">
-                        <?php echo $row['property_name'] . " in " . $row['locations'] . ", India" ?>
+                        <?php
+                        echo (isset($row['property_name']) && isset($row['locations'])) ? $row['property_name'] . " in " . $row['locations'] . ", India" : "Propperty Name and Location not avilable";
+                        ?>
                     </p>
                     <p class="whitespace-nowrap">
-                        <?php echo $row['MaxAdult'] + $row['MaxChild'] . " " . " guests" . " . " . $row['HasBadroom'] . " " . "bedrooms " . " . " . $row['HasBeds'] . " " . "beds" . " . " . $row['HasBathroom'] . " " . "bathrooms" ?>
+                        <?php echo (isset($row['MaxAdult']) ? $row['MaxAdult'] : 0) + (isset($row['MaxChild']) ? $row['MaxChild'] : 0) . " " . " guests" . " . " . (isset($row['HasBadroom']) ? $row['HasBadroom'] . " " . "bedrooms " : "") . " . " . (isset($row['HasBeds']) ? $row['HasBeds'] . " " . "beds" : "") . " . " . (isset($row['HasBathroom']) ? $row['HasBathroom'] . " " . "bathrooms" : "");
+                        ?>
                     </p>
                     <div class="py-3 mt-5 border border-gray-200 rounded-xl font-semibold">
                         <div class="flex items-center justify-around">
@@ -216,11 +247,13 @@ session_start();
                         <div class=" bg-gray-200 flex justify-center items-center w-10 h-10 rounded-full"><i
                                 class="fa-solid fa-user"></i></div>
                         <div>
-                            <h3 class=" font-bold ">Hosted by <?php echo $row['Hostid'] ?></h3>
+                            <h3 class=" font-bold ">Hosted by
+                                <?php echo (isset($row['Hostid']) ? $row['Hostid'] : "Name Not Found") ?>
+                            </h3>
                             <p class=" host-p-profile">Superhost -
                                 <?php
                                 $now = time();
-                                $date = $row['Hosting_date'];
+                                $date = isset($row['Hosting_date']) ? $row['Hosting_date'] : 00;
                                 $diff = $now - strtotime($date);
                                 $day = $diff / (24 * 60 * 60);
                                 echo isset($row['Hosting_date']) ? round($day / 30) : 00
@@ -254,7 +287,7 @@ session_start();
                     </div>
                     <div class=" py-5 border-b-2">
                         <h1 class=" text-2xl font-semibold">About this place </h1> <br>
-                        <p><?php echo $row['Description'] ?></p>
+                        <p><?php echo (isset($row['Description'])) ? $row['Description'] : "No Description" ?></p>
                         <a href="" class=" font-semibold my-7"><u>Show more</u></a>
                     </div>
                 </div>
@@ -280,8 +313,57 @@ session_start();
                                 <i class=" cursor-pointer fa-solid fa-angle-left transform -rotate-90"></i>
                             </div>
                         </div>
-                        <a class="cursor-pointer text-white w-full block  bg-pink-600 rounded-lg px-7 py-2 font-semibold text-center"
-                            href="">Reserve</a>
+                        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                        <script>
+                            // Your Razorpay key
+                            var options = {
+                                "key": "your_key_id",  // Replace with your Razorpay Key ID
+                                "amount": 1399900,      // Total amount in paise (₹13,999.06 = 1399900 paise)
+                                "currency": "INR",
+                                "name": "Hotel Booking",
+                                "description": "Payment for booking",
+                                "image": "https://your-site.com/logo.png",  // Optional: Your logo
+                                "handler": function (response) {
+                                    // On successful payment, send the payment ID to your server for verification
+                                    var payment_id = response.razorpay_payment_id;
+
+                                    // Optionally, create a form to submit payment details to the server
+                                    var form = document.createElement('form');
+                                    form.method = 'POST';
+                                    form.action = 'payment.php';  // Replace with your server-side PHP handler
+
+                                    var hiddenInput = document.createElement('input');
+                                    hiddenInput.type = 'hidden';
+                                    hiddenInput.name = 'razorpay_payment_id';
+                                    hiddenInput.value = payment_id;
+                                    form.appendChild(hiddenInput);
+                                    document.body.appendChild(form);
+                                    form.submit();  // Submit the form to your backend for further processing
+                                },
+                                "prefill": {
+                                    "name": "Customer Name",  // Replace with dynamic customer details
+                                    "email": "customer@example.com",  // Replace with customer email
+                                    "contact": "9999999999"  // Replace with customer phone number
+                                },
+                                "notes": {
+                                    "address": "Customer's address"  // Optional: Additional details
+                                },
+                                "theme": {
+                                    "color": "#F37254"
+                                }
+                            };
+
+                            var rzp1 = new Razorpay(options);
+
+                            // Trigger Razorpay payment when "Reserve" button is clicked
+                            document.getElementById('rzp-button1').onclick = function (e) {
+                                e.preventDefault();  // Prevent the default form submission
+                                rzp1.open();         // Open Razorpay checkout modal
+                            };
+                        </script>
+
+                        <a class="cursor-pointer text-white w-full block bg-pink-600 rounded-lg px-7 py-2 font-semibold text-center"
+                            id="rzp-button1">Reserve</a>
                         <p class=" my-2">You won't be charged yet</p>
                         <div class=" py-2 border-b-2 ">
                             <div class=" flex my-2 items-center justify-between ">
@@ -311,43 +393,41 @@ session_start();
             </div>
             <div class=" border-b-2 flex flex-col gap-y-3 py-5">
                 <h2 class=" text-2xl font-semibold my-4">What this place offers</h2>
-                <div class=" lg:flex gap-10 tracking-widest">
+                <div class="lg:flex gap-10 tracking-widest">
                     <div>
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-city"></i>
-                            <p>City skyline view</p>
-                        </div>
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-kitchen-set"></i>
-                            <p>kitchen</p>
-                        </div>
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-wifi"></i>
-                            <p>wifi</p>
-                        </div>
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-car"></i>
-                            <p>Free parking on premises</p>
-                        </div>
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-tv"></i>
-                            <p>TV</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-paw"></i>
-                            <p>pets allowed</p>
-                        </div>
-
-                        <div class=" flex gap-5 my-2"><i class="fa-solid fa-bath"></i>
-                            <p>Dedicated workspace</p>
-                        </div>
-                        <div class=" flex gap-5 my-2 line-through "><i class="fa-solid fa-ban-smoking"></i>
-                            <p>Smoke alarm</p>
-                        </div>
-                        <div class=" flex gap-5 my-2 line-through"><i class="fa-solid fa-ban"></i>
-                            <p>Carbon monoxide alarm</p>
-                        </div>
-                    </div>
-                    <div class=" text-center font-semibold my-2 ">
-                        <p class="cursor-pointer border-2 rounded-lg p-2">Show all amenities</p>
+                        <?php
+                        if (!empty($activeSpecifications)) {
+                            foreach ($activeSpecifications as $index => $spec) {
+                                if ($index % 5 === 0 && $index !== 0) {
+                                    echo '</div><div>';
+                                }
+                                ?>
+                                <div class="flex gap-5 my-2">
+                                    <i class="fa-solid <?= $spec['icon'] ?>"></i>
+                                    <p><?= $spec['label'] ?></p>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "<p>No active specifications to display.</p>";
+                        }
+                        ?>
                     </div>
                 </div>
+
+                <?php if (!empty($warnings)) { ?>
+                    <div class="bg-red-100 text-red-600 p-3 rounded-lg my-5">
+                        <h3 class="font-bold">Restrictions:</h3>
+                        <ul>
+                            <?php foreach ($warnings as $warning) { ?>
+                                <li><?= $warning ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+
+
+
             </div>
             <div class=" border-b-2">
                 <h1 class=" my-4 font-bold text-xl ">Where you'll be</h1>
@@ -383,7 +463,8 @@ session_start();
                             class="details flex gap-10 sm:w-96 items-center text-center justify-center bg-white rounded-3xl shadow-xl shadow-gray-700 py-5 px-5 my-10">
                             <div>
                                 <div class=" rounded-full w-20 h-20 bg-gray-600"></div>
-                                <h2 class=" font-bold text-xl">Sourav</h2>
+                                <h2 class=" font-bold text-xl">
+                                    <?php echo (isset($row['Hostid']) ? $row['Hostid'] : "Name Not Found") ?></h2>
                                 <p>Host</p>
                             </div>
                             <div>
@@ -410,7 +491,8 @@ session_start();
                         <p class=" font-bold my-2"> Show more</p>
                     </div>
                     <div>
-                        <p class=" text-xl font-semibold my-5">Aditi is a Superhost</p>
+                        <p class=" text-xl font-semibold my-5">
+                            <?php echo (isset($row['Hostid']) ? $row['Hostid'] : "Name Not Found") ?> is a Superhost</p>
                         <div class="my-3">
                             <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays
                                 for guests.</p>
