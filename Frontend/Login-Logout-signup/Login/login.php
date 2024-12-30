@@ -16,7 +16,7 @@
         <div class="innerlogin">
             <h1 class="font-bold text-2xl my-3">Login</h1>
             <p class="mb-7 text-gray-600 font-semibold ">Lorem ipsum dolor consectetur adipisicing.</p>
-            <form action="login_backend.php" method="post">
+            <form action="../../../backend/login_backend.php" method="post">
                 <h3 class="font-bold my-2 mt-10">Email</h3>
                 <input type="email" name="email" id="email" placeholder="Enter your email"
                     class=" email px-3 py-2 text-gray-500 my-2" required>

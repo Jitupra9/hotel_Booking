@@ -18,7 +18,7 @@
             <div class="w-full max-w-md">
                 <div class="bg-white rounded-lg shadow-md p-8">
                     <h2 class="text-2xl font-semibold mb-4 text-center">Sign Up</h2>
-                    <form action="process_signup.php" method="POST" >
+                    <form action="../../../backend/process_signup.php" method="POST" >
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
                             <input type="email" name="email" id="email" class="mt-1 p-2 block w-full border rounded-md"

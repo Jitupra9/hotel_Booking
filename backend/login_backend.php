@@ -5,7 +5,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 try {
-    include_once '../../../config/coon.php';
+    include_once '../config/coon.php';
     
     if (!$conn) {
         throw new Exception("Database connection failed");

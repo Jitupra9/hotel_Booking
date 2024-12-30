@@ -47,15 +47,32 @@ session_start();
             <div class="flex justify-between">
                 <h1 class="text-3xl font-semibold"><?php echo $row['Title'] ?></h1>
                 <div class=" flex items-center gap-3 relative">
-                    <button class=" shareButton cursor-pointer"><u><i
-                                class="fa-regular fa-share-from-square"></i> Share</u></button>
-                                <?php
-                                $user_id = $_SESSION['user']['user_id'];
-                                $property_id = $_GET['property'];
-                                $query = "select * from whichlist where property_id = $property_id and user_id = $property_id";
-                                
-                                ?>
-                    <button class="saveItem"><u><i class="saved_porp fa-regular fa-bookmark"></i> Save</u></button>
+                    <button class=" shareButton cursor-pointer"><u><i class="fa-regular fa-share-from-square"></i>
+                            Share</u></button>
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                        $property_id = $_GET['property'];
+                        $user_id = $_SESSION['user']['user_id'];
+                        $query = "select property_id from wishlist where property_id ='$property_id' and user_id = '$user_id' ";
+                        $result = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($result) != 0) {
+                            ?>
+                            <button class="saveItem"><u><i class="saved_porp fa-solid fa-bookmark text-red-600"></i>
+                                    Save</u></button>
+                            <?php
+                        }else{
+                            ?>
+                            <button class="saveItem"><u><i class="saved_porp fa-regular fa-bookmark"></i>
+                                    Save</u></button>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <button class="saveItem"><u><i class="saved_porp fa-regular fa-bookmark"></i>
+                                Save</u></button>
+                        <?php
+                    }
+                    ?>
                     <div
                         class=" share_sucess bg-white  shadow-lg border shadow-gray-600 rounded-xl py-1 px-3 absolute top-6 whitespace-nowrap hidden">
                         <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i> Link copyed
