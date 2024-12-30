@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="home/landing page/foooter-header/footer.css?v=<?= $version ?>">
+  <link rel="stylesheet" href="frontend/landing page/foooter-header/footer.css?v=<?= $version ?>">
 </head>
 <body>          
             <footer class="">
