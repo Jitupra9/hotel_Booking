@@ -9,7 +9,7 @@ ob_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
-    <link rel="stylesheet" href="home/landing page/home.css?v=<?= $version ?>">
+    <link rel="stylesheet" href="frontend/landing page/home.css?v=<?= $version ?>">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/12543e6ff4.js" crossorigin="anonymous"></script>
     <style>
@@ -25,8 +25,8 @@ ob_start();
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="home/javascript/scripts.js?v=<?= $version ?>"></script>
-    <script src="home/javascript/scripts_two.js?v=<?= $version ?>"></script>
+    <script src="frontend/javascript/scripts.js?v=<?= $version ?>"></script>
+    <script src="frontend/javascript/scripts_two.js?v=<?= $version ?>"></script>
     <div class="py-7 book_containe">
         <div class="header top-0 fixed bg-white  pt-2 w-full z-50  ">
             <?php include_once 'foooter-header/header.php' ?>
@@ -169,13 +169,13 @@ ob_start();
                                             <div class="property_details ${element.place_type} w-full sm:w-80 border border-gray-400 rounded-2xl  pb-5 overflow-hidden m-2">
                                                 <div class="images relative  cursor-pointer">
                                                     <div class="imageoverflows absolute flex justify-center items-center w-full h-full bg-black opacity-50">
-                                                    <a href="home/room_details/room_details.php?property=${element.Property_id}" class=" text-white">Click to Details</a></div>
+                                                    <a href="frontend/room_details/room_details.php?property=${element.Property_id}" class=" text-white">Click to Details</a></div>
                                                     <div class="absolute top-3 w-full flex justify-between px-2">
                                                         <p class="bg-white rounded-full px-2">Guest Favorite</p>
                                                         <p><i class="fa-solid fa-heart opacity-50 text-black"></i></p>
                                                     </div>
                                                 <!-- room images not stored due to large storages need  -->
-                                                    <img src="images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
+                                                    <img src="frontend/images/0d0d81ad-e946-4086-b122-ce0b4464af75.jpg" class="w-full h-full" alt="Room Image">
                                                 </div>
                                                 <div class="details p-2">
                                                     <div class="flex justify-between font-semibold ">
@@ -325,11 +325,11 @@ ob_start();
             </div>
             <div class="profileStatus hidden">
                 <?php if (isset($_SESSION['user'])): ?>
-                    <div class="profile login "><a href="home/profile/profile.php"><i class="fa-regular fa-user"></i>
+                    <div class="profile login "><a href="frontend/profile/profile.php"><i class="fa-regular fa-user"></i>
                             <p>Profile</p>
                         </a></div>
                 <?php else: ?>
-                    <div class="login "><a href="home/Login-Logout-signup/Login/autologin.php"><i
+                    <div class="login "><a href="frontend/Login-Logout-signup/Login/autologin.php"><i
                                 class="fa-regular fa-user"></i>
                             <p>Login</p>
                         </a></div>

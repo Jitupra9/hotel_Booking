@@ -10,7 +10,7 @@
 
 <body class="">
     <div class="homepage">
-        <?php include_once './home/landing page/home.php'; ?>
+        <?php include_once './frontend/landing page/home.php'; ?>
     </div>
 </body>
 

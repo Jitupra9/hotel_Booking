@@ -1,0 +1,145 @@
+
+:root{
+    --gray :rgb(133, 129, 129);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+.image-container img {
+    transition: filter 0.3s ease;
+}
+
+.image-container img:hover {
+    filter: brightness(0.5);
+}
+.image-container:hover .overlay {
+    opacity: 1;
+}
+.property_main_container{
+    padding:0% 13% ;
+}
+.propertydetalis{
+    position: relative;
+    /* overflow: hidden; */
+    /* border: 2px solid rgb(19, 217, 131); */
+
+}
+.booking_detilas_div{
+    width: 60%;
+}
+div .fa-star{
+font-size: 8px;
+}
+.reviews{
+    font-size: 12px;
+}
+.overflow_div{
+    /* overflow: hidden; */
+    overflow-y: scroll;
+    position: relative;
+    box-sizing: border-box;
+}
+.property-feature-parent{
+    padding: 3% 0%;
+}
+.property-feature{
+    display: flex;
+    align-items: center;
+    padding:2% 0%;
+
+}
+.property-feature p{
+    color:var(--gray) ;
+    font-weight: 400;
+    font-size: 14px ;
+}
+.analys_box{
+    text-align: center;
+
+}
+.guset_favourite{
+    display: block;
+}
+.payment_div {
+    background-color:white;
+    /* border: 2px solid red; */
+    position: absolute;
+    /* bottom: 5%; */
+    right:0%;
+    width: 32%; 
+}
+.host-p-profile{
+    color: var(--gray);
+}
+.login_popup{
+    background-color: white;
+    position: fixed;
+    top:35%;
+    left: 30%;
+    z-index: 100;
+    /* border: 1px solid gray; */
+    box-shadow: 1px 1px 25px 3px rgb(151, 149, 149);
+    border-radius: 19px;
+    padding: 2% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.login_popup div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5%;
+}
+/* .property_main_container{
+    padding:2% 10%;
+    transition: all 0.3s ease-in-out;
+}
+ */
+ @media only screen and (max-width:1000px){
+    .property_main_container{
+        transition: all 0.3s ease-in-out;
+        padding:0% 5%;
+    }
+    /* .payment_div {
+        width: 30%;
+        right:10%;
+    } */
+    .guset_favourite{
+        display:none;
+    }
+    .analys_box{
+        width: 33.33%;
+        /* border: 2px solid gray; */
+        text-align: center;
+    }
+ }
+@media only screen and (max-width:500px){
+    .property_main_container{
+        padding:0% 0% ;
+        transition: all 0.3s ease-in-out;
+    }
+    .propertydetalis_parent{
+        padding:2% 3% ;
+
+    }
+    .image-container img {
+        transition: none;
+    }
+    .booking_detilas_div{
+        width: 100%;
+    }
+    .payment_div{
+        display: none;
+    }
+    .image-container img:hover {
+        filter:none; /* Darken the image on hover */
+    }
+      
+}
+
+
+

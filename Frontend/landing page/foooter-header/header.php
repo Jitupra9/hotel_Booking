@@ -37,17 +37,17 @@
         <hr class="border border-gray-500 my-2">
         <?php if (isset($_SESSION['user'])):
             ?>
-            <div class=""><a href="home/profile/profile.php">
+            <div class=""><a href="frontend/profile/profile.php">
                     <p><i class="fa-regular fa-circle-user"></i> Account</p>
                 </a></div>
         <?php else: ?>
-            <div><a href="home/Login-Logout-signup/Login/autologin.php">
+            <div><a href="frontend/Login-Logout-signup/Login/autologin.php">
                     <p><i class="fa-regular fa-user"></i> Login</p>
                 </a></div>
         <?php endif; ?>
         <hr class="border border-gray-500 my-2">
         <p><a href=""><i class="fa-solid fa-info"></i> Help Center</a></p>
-        <p><a href="home/Login-Logout-signup/logout.php"><i class="fa-regular fa-circle-xmark"></i> Logut</a></p>
+        <p><a href="frontend/Login-Logout-signup/logout.php"><i class="fa-regular fa-circle-xmark"></i> Logut</a></p>
     </div>
 
 
