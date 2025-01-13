@@ -232,13 +232,13 @@ session_start();
                                     guests</p>
                             </div>
                             <div class=" analys_box  border-r">
-                                <p class=" text-center text-2xl">4.89</p>
+                                <p class=" text-center text-2xl">00</p>
                                 <?php for ($i = 0; $i <= 5; $i++) {
                                     echo '<i class="fa-solid fa-star text-xs"></i>';
                                 } ?>
                             </div>
                             <divc class=" analys_box  ">
-                                <p class="text-2xl">44</p>
+                                <p class="text-2xl"><?php echo isset($row['propert_review']) ? $row['propert_review'] : '00'  ?></p>
                                 <p><u>Reviews</u></p>
                             </divc>
                         </div>
@@ -313,55 +313,6 @@ session_start();
                                 <i class=" cursor-pointer fa-solid fa-angle-left transform -rotate-90"></i>
                             </div>
                         </div>
-                        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-                        <script>
-                            // Your Razorpay key
-                            var options = {
-                                "key": "your_key_id",  // Replace with your Razorpay Key ID
-                                "amount": 1399900,      // Total amount in paise (₹13,999.06 = 1399900 paise)
-                                "currency": "INR",
-                                "name": "Hotel Booking",
-                                "description": "Payment for booking",
-                                "image": "https://your-site.com/logo.png",  // Optional: Your logo
-                                "handler": function (response) {
-                                    // On successful payment, send the payment ID to your server for verification
-                                    var payment_id = response.razorpay_payment_id;
-
-                                    // Optionally, create a form to submit payment details to the server
-                                    var form = document.createElement('form');
-                                    form.method = 'POST';
-                                    form.action = 'payment.php';  // Replace with your server-side PHP handler
-
-                                    var hiddenInput = document.createElement('input');
-                                    hiddenInput.type = 'hidden';
-                                    hiddenInput.name = 'razorpay_payment_id';
-                                    hiddenInput.value = payment_id;
-                                    form.appendChild(hiddenInput);
-                                    document.body.appendChild(form);
-                                    form.submit();  // Submit the form to your backend for further processing
-                                },
-                                "prefill": {
-                                    "name": "Customer Name",  // Replace with dynamic customer details
-                                    "email": "customer@example.com",  // Replace with customer email
-                                    "contact": "9999999999"  // Replace with customer phone number
-                                },
-                                "notes": {
-                                    "address": "Customer's address"  // Optional: Additional details
-                                },
-                                "theme": {
-                                    "color": "#F37254"
-                                }
-                            };
-
-                            var rzp1 = new Razorpay(options);
-
-                            // Trigger Razorpay payment when "Reserve" button is clicked
-                            document.getElementById('rzp-button1').onclick = function (e) {
-                                e.preventDefault();  // Prevent the default form submission
-                                rzp1.open();         // Open Razorpay checkout modal
-                            };
-                        </script>
-
                         <a class="cursor-pointer text-white w-full block bg-pink-600 rounded-lg px-7 py-2 font-semibold text-center"
                             id="rzp-button1">Reserve</a>
                         <p class=" my-2">You won't be charged yet</p>
@@ -394,7 +345,7 @@ session_start();
             <div class=" border-b-2 flex flex-col gap-y-3 py-5">
                 <h2 class=" text-2xl font-semibold my-4">What this place offers</h2>
                 <div class="lg:flex gap-10 tracking-widest">
-                    <div>
+                    <div> 
                         <?php
                         if (!empty($activeSpecifications)) {
                             foreach ($activeSpecifications as $index => $spec) {

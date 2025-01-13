@@ -5,21 +5,21 @@
             class="  flex flex-wrap text-center justify-center items-center  gap-4 w-96  overflow-hidden box-border ">
             <div>
                 <div class=" w-24 border-2 rounded-xl  hover:border-black ">
-                    <img class="object-cover object-center w-full h-full block rounded-xl" src="images/full_map.jpg"
+                    <img class="object-cover object-center w-full h-full block rounded-xl" src="Frontend/images/full_map.jpg"
                         alt="">
                 </div>
                 <p class="my-2 text-gray-600">I'm flexible </p>
             </div>
             <div>
                 <div class=" w-24 border-2 rounded-xl  hover:border-black">
-                    <img class="object-cover object-center w-full h-full block rounded-xl" src="images/europe.webp"
+                    <img class="object-cover object-center w-full h-full block rounded-xl" src="Frontend/images/europe.webp"
                         alt="">
                 </div>
                 <p class="my-2 text-gray-600">Europe</p>
             </div>
             <div>
                 <div class=" w-24 border-2 rounded-xl  hover:border-black">
-                    <img class="object-cover object-center w-full h-full block rounded-xl" src="images/italy.webp"
+                    <img class="object-cover object-center w-full h-full block rounded-xl" src="Frontend/images/italy.webp"
                         alt="">
                 </div>
                 <p class="my-2 text-gray-600">Italy </p>
@@ -27,14 +27,14 @@
 
             <div>
                 <div class=" w-24 border-2 rounded-xl  hover:border-black">
-                    <img class="object-cover object-center w-full h-full block rounded-xl" src="images/south_asia.webp"
+                    <img class="object-cover object-center w-full h-full block rounded-xl" src="Frontend/images/south_asia.webp"
                         alt="">
                 </div>
                 <p class="my-2 text-gray-600">Southeast Asia </p>
             </div>
             <div>
                 <div class=" w-24 border-2 rounded-xl hover:border-black ">
-                    <img class="object-cover object-center w-full h-full block rounded-xl" src="images/midle_east.webp"
+                    <img class="object-cover object-center w-full h-full block rounded-xl" src="Frontend/images/midle_east.webp"
                         alt="">
                 </div>
                 <p class="my-2 text-gray-600">Middle East</p>
@@ -42,7 +42,7 @@
             <div>
                 <div class=" w-24 border-2 rounded-xl hover:border-black ">
                     <img class="object-cover object-center w-full h-full block rounded-xl"
-                        src="images/unitaed_state.webp" alt="">
+                        src="Frontend/images/unitaed_state.webp" alt="">
                 </div>
                 <p class="my-2 text-gray-600">United states</p>
             </div>

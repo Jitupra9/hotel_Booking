@@ -30,7 +30,7 @@
                       <a href="">Company</a>
                     </li>
                     <li>
-                      <a href="">Clients</a>
+                      <a href="">About US</a>
                     </li>
                     <li>
                       <a href="">News</a>
@@ -42,7 +42,7 @@
                   <ul>
                     <h3 class="ct-footer-list-header">Services</h3>
                     <li>
-                      <a href="">Design</a>
+                      <a href="">Property Book</a>
                     </li>
                     <li>
                       <a href="">Marketing</a>
@@ -51,7 +51,7 @@
                       <a href="">Sales</a>
                     </li>
                     <li>
-                      <a href="">Programming</a>
+                      <a href="">Traveling</a>
                     </li>
                     <li>
                       <a href="">Support</a>
@@ -114,47 +114,6 @@
                       <a href="">Contact Us</a>
                     </li>
                   </ul>
-                </div>
-                <hr />
-                <div class="third-footer-section">
-                  <div class="footer-comany-logo"></div>
-                  <p>
-                    Lorem ipsum dolor <br /> sit amet consectetur <br />
-                    adipisicing elit.
-                    <br />
-                    Officiis, illum.
-                  </p>
-                  <div class="apple-store-box">
-                  <i class="fa-brands fa-apple"></i>
-                    <div>
-                      <p>Download us the</p>
-                      <h4>App Store</h4>
-                    </div>
-                  </div>
-                  <div class="play-store-box">
-                  <i class="fa-brands fa-google-play"></i>
-                    <div>
-                      <p>Download us the</p>
-                      <h4>Google Play</h4>
-                    </div>
-                  </div>
-                  <div class="sosial-media-link">
-                    <div class="social-media-icon">
-                      <a href="http://"><i class="fa-brands fa-square-facebook"></i></a>
-                    </div>
-                    <div class="social-media-icon">
-                      <a href="http://"><i class="fa-brands fa-square-twitter"></i></a>
-                    </div>
-                    <div class="social-media-icon">
-                      <a href="http://"><i class="fa-brands fa-square-instagram"></i></a>
-                    </div>
-                    <div class="social-media-icon">
-                      <a href="http://"><i class="fa-solid fa-link"></i></a>
-                    </div>
-                    <div class="social-media-icon">
-                      <a href="http://"><i class="fa-brands fa-square-whatsapp"></i></a>
-                    </div>
-                  </div>
                 </div>
                 <hr />
                 <div class="forth-footer-section">

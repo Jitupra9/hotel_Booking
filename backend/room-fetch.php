@@ -1,6 +1,5 @@
 <?php
 try {
-    // Database connection
     include '../config/coon.php';
     $placeName = $_POST['placename'] ?? '';
     $stdate = $_POST['stdate'] ?? '';
