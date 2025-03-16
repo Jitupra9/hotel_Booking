@@ -30,6 +30,9 @@ ob_start();
     <div class="py-7 book_containe">
         <div class="header top-0 fixed bg-white  pt-2 w-full z-50  ">
             <?php include_once 'foooter-header/header.php' ?>
+            <div class=" msg_box border absolute top-3 right-2 rounded-lg px-5 py-2 ">
+                <p>it's for message</p>
+            </div>
             <?php include_once 'splicode/phone.php' ?>
             <?php include_once 'splicode/filter.php' ?>
             <div class=" hidden  w-full sm:flex justify-center ">
@@ -151,7 +154,6 @@ ob_start();
                         $(document).ready(function () {
                             let searchData = {};
                             const renderRooms = (rooms) => {
-                                $(".allrooms").empty();
                                 if (rooms.length != 0) {
                                     rooms.forEach(element => {
                                         function formatDateRange(availableFrom, availableTo) {
@@ -203,9 +205,7 @@ ob_start();
                                     let nothing = '<h1> No data is avilabl</h1>';
                                     $(".allrooms").append(nothing);
                                 }
-                                
                             };
-
                             const fetchRooms = (searchData = {}) => {
                                 $.ajax({
                                     url: "backend/room-fetch.php",
@@ -230,10 +230,9 @@ ob_start();
                                         renderRooms(response);
                                     },
                                     error: function (xhr, status, error) {
-                                        console.error("Error fetching rooms:", error);
+                                        console.error("Error fetching rooms:");
                                     }
                                 });
-                                console.log(searchData);
                             };
                             fetchRooms(searchData);
 

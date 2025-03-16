@@ -3,7 +3,7 @@ class Db {
     private $server = "localhost";
     private $username = "root";
     private $password = "";
-    private $db = "hotel-management";
+    private $db = "hotel_management";
     private $conn;
 
      function __construct() {

@@ -114,6 +114,5 @@ try {
         "error" => true,
         "message" => "An error occurred while fetching rooms."
     ]);
-    error_log($error->getMessage());
 }
 ?>
